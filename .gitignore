@@ -1,0 +1,76 @@
+# ============================================================
+# DuplexDrama demo repo — .gitignore
+# ============================================================
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtualenvs
+venv/
+.venv/
+ENV/
+env/
+
+# Node (none used by this repo, but defensive)
+node_modules/
+
+# Build artefacts (local)
+samples_selection.json
+*.log
+*.tmp.wav
+*.tmp.m4a
+
+# Stereo showcase files (superseded by _hm/_ai mono split)
+assets/audio/_showcase/*_off-talk.m4a
+assets/audio/_showcase/*_off-talk.opus
+assets/audio/_showcase/*_backchannel.m4a
+assets/audio/_showcase/*_backchannel.opus
+
+# Generated watermark sidecars (do NOT commit; they contain UUIDs)
+*.uuid.json
+
+# nohup.out (59KB log, not part of the site)
+nohup.out
+
+# Internal build docs / scripts (keep demo repo focused on the published page;
+# synthesis code ships with the dataset release, not here)
+scripts/
+docs/
+
+# Waveform / pipeline images are committed; raw assets are not
+assets/audio/_tier1/*.opus
+assets/audio/_tier1/*.m4a
+assets/audio/_tier2/*.opus
+assets/audio/_tier2/*.m4a
+assets/audio/_tier3/*.opus
+assets/audio/_tier3/*.m4a
+
+# NOTE: do NOT gitignore .opus / .m4a files globally. Only the demo-page
+# sample dirs are excluded above — when committing to a *separate* archival
+# repo (DuplexDrama/duplexdrama-archive for Zenodo), .wav / .opus / .m4a
+# should be tracked via Git LFS.
+
+# Local testing
+.local-ffmpeg-test/
+test_outputs/

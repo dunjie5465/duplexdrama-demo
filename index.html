@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DuplexDrama: A Script-Aware Full-Duplex Spoken Dialogue Dataset with Sound Events</title>
+  <meta name="description" content="DuplexDrama is a script-aware full-duplex spoken dialogue dataset with sound events — 6,400 dialogues, 800 hours (Chinese ~500 h + English ~300 h), 64 voice timbres, 13 personas, 7 emotions." />
+
+  <!-- Open Graph / Twitter Card -->
+  <meta property="og:title" content="DuplexDrama: A Script-Aware Full-Duplex Spoken Dialogue Dataset with Sound Events" />
+  <meta property="og:description" content="Script-aware full-duplex spoken dialogue dataset with sound events · 6,400 dialogues · 800 hours · 64 voice timbres · 13 personas · 7 emotions" />
+  <meta property="og:type" content="website" />
+  <!-- og:url intentionally omitted until the canonical host is decided; Open
+       Graph falls back to the page's actual URL, so nothing breaks. -->
+
+  <!-- Fonts (Google Sans family equivalent: Product Sans falls back to system-ui) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Bulma 0.9 (Sommelier template stack) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
+
+  <!-- Custom theme (purple + cyan, differentiated from Moshi/Sommelier/NVIDIA green) -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+<!-- ============================================================
+     §1 NAVBAR (sticky, with anchor links to all sections)
+============================================================ -->
+<nav class="navbar is-white" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="#top">
+        <span class="brand-emoji" aria-hidden="true">🎭</span>
+        <span class="brand-text">DuplexDrama</span>
+      </a>
+    </div>
+    <div class="navbar-menu is-active">
+      <div class="navbar-start">
+        <a class="navbar-item" href="#abstract">Abstract</a>
+        <a class="navbar-item" href="#stats">Dataset</a>
+        <a class="navbar-item" href="#pipeline">Pipeline</a>
+        <a class="navbar-item" href="#audio">Audio</a>
+        <!-- "License" nav item removed with §9; restore both together. -->
+      </div>
+      <!-- Top-right control commented out for the current version.
+           The BibTeX button that used to live here was already removed with
+           §10 (its #cite target no longer exists); what remained was an
+           "Under Review" status pill, now hidden too. Restore alongside the
+           citation section.
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <span class="button is-static is-rounded navbar-status">
+              <span class="icon"><i class="fa-solid fa-hourglass-half"></i></span>
+              <span>Under Review</span>
+            </span>
+          </div>
+        </div>
+      </div>
+      -->
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================
+     §2 HERO
+============================================================ -->
+<section class="hero is-medium hero-section" id="top">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <p class="hero-eyebrow"><span aria-hidden="true">🎭</span> DuplexDrama</p>
+      <h1 class="title hero-title">
+        DuplexDrama: A Script-Aware Full-Duplex Spoken Dialogue Dataset
+        with Sound Events
+      </h1>
+      <h2 class="subtitle hero-subtitle">
+        6,400 multi-turn spoken dialogues (800 h: Chinese ~500 h + English ~300 h) for full-duplex speech-language research
+      </h2>
+      <!-- Venue pills hidden until the paper is accepted.
+           Reason is NOT anonymity: ICASSP 2027 review is single-blind, so this
+           page revealing authorship breaks nothing. The problem is that a
+           venue name and dates sitting under the title read as though the work
+           had already been accepted. Restore on acceptance.
+      <p class="venue-tag is-size-6">
+        <span class="venue-pill">ICASSP 2027</span>
+        <span class="venue-pill">Toronto, Canada · 16-21 May 2027</span>
+      </p>
+      -->
+      <div class="buttons is-centered hero-buttons">
+        <a class="button is-light is-large is-rounded" href="#audio">
+          <span class="icon"><i class="fa-solid fa-headphones"></i></span>
+          <span>Listen</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     §3 ABSTRACT (mirrors §1 of paper)
+============================================================ -->
+<section class="section" id="abstract">
+  <div class="container is-four-fifths">
+    <h3 class="title is-3 section-heading">Abstract</h3>
+    <div class="content is-medium">
+      <p>
+        We present <strong>DuplexDrama</strong>, the first synthesized
+        spoken dialogue dataset that combines four dimensions not
+        simultaneously available in any prior corpus:
+      </p>
+      <ol>
+        <li><strong>Persona &amp; Scenario</strong> — complete persona and
+        scenario settings produced via LLMs;</li>
+        <li><strong>Full-duplex behaviors</strong> — three behaviors carried
+        as tags: <em>interruption</em>, <em>backchannel</em>, and
+        <em>in-sentence pause</em>, rendered as acoustic overlap rather
+        than clean turn-taking;</li>
+        <li><strong>Expressive speech</strong> — wide speaker coverage with
+        a closed seven-class emotion vocabulary aligned to persona;</li>
+        <li><strong>Script-aware sound events</strong> — sound events
+        injected at proper positions parsed from the script, affording
+        non-speech information beyond voice.</li>
+      </ol>
+      <p>
+        The release covers <strong>6,400 dialogues</strong> totalling
+        <strong>800 hours</strong> (Chinese &sim;500&nbsp;h + English
+        &sim;300&nbsp;h), built with a <strong>64-voice timbre pool</strong>
+        spanning 13 personas and 5 age buckets. Speech is synthesized with
+        <strong>IndexTTS2</strong>; <strong>3.8%</strong> of utterances
+        carry at least one full-duplex status. An asset bank supplies
+        <strong>139 environment audios</strong> (across 7 scene categories)
+        and <strong>2,203 sound event audios</strong> (52 categories), both
+        injected into the dialogue track through a match strategy.
+        <strong>DeepSeek-v4.1-pro</strong> and
+        <strong>Gemini-3.1-pro-preview</strong> serve as dual LLM judges
+        for cross-checking both script content and dialogue audio. The full
+        dataset will be released to advance full-duplex spoken dialogue
+        model development; audio samples and the LLM-judge evaluation
+        prompt live on this page.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     §4 KEY-NUMBER INFOGRAPHIC STRIP (CSS only, no JS)
+============================================================ -->
+<section class="section stat-strip-section" id="stats">
+  <div class="container">
+    <h3 class="title is-3 section-heading has-text-centered">Dataset Summary</h3>
+    <div class="stat-strip">
+      <div class="stat-tile">
+        <div class="num">6,400</div>
+        <div class="lbl">Dialogues</div>
+      </div>
+      <div class="stat-tile">
+        <div class="num">800</div>
+        <div class="lbl">Hours</div>
+      </div>
+      <div class="stat-tile">
+        <div class="num">7:40</div>
+        <div class="lbl">Avg Duration</div>
+      </div>
+      <div class="stat-tile">
+        <div class="num">64</div>
+        <div class="lbl">Voice Timbres</div>
+      </div>
+      <div class="stat-tile">
+        <div class="num">7</div>
+        <div class="lbl">Emotions</div>
+      </div>
+      <!-- The three full-duplex behavior tiles mirror Table 2 of the paper:
+           tag count and share across all ~362k turns (8 s avg. turn length).
+           The corpus-wide summary "3.8% of utterances have at least one
+           full-duplex status" appears in the Abstract; here we surface
+           the three tag families separately, as the paper does.
+           "In-Sentence Pause" follows the paper's terminology; the raw tag
+           is <user_incomplete>. -->
+      <div class="stat-tile">
+        <div class="num">2.4<span class="unit">%</span></div>
+        <div class="lbl">Interrupt</div>
+      </div>
+      <div class="stat-tile">
+        <div class="num">0.6<span class="unit">%</span></div>
+        <div class="lbl">Backchannel</div>
+      </div>
+      <div class="stat-tile">
+        <div class="num">0.7<span class="unit">%</span></div>
+        <div class="lbl">In-Sentence Pause</div>
+      </div>
+    </div>
+
+    <p class="stat-footnote">
+      The three full-duplex tiles are each tag family's share across all
+      &sim;362k turns (Table 2). The corpus-level 3.8% in the Abstract is
+      the union of all three families at the utterance level.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     §5 PIPELINE TEASER IMAGE
+============================================================ -->
+<section class="section" id="pipeline">
+  <div class="container">
+    <h3 class="title is-3 section-heading has-text-centered">Pipeline</h3>
+    <figure class="pipeline-figure">
+      <!-- Compiled from the paper's OWN TikZ source, so the page and the
+           manuscript cannot drift apart:
+             bash scripts/tikz_to_svg.sh \
+                 ../docs/paper/figures/figure1_pipeline.tex \
+                 assets/images/pipeline.svg
+           Re-run after editing the .tex. (The older figure1_pipeline.drawio
+           describes a superseded v7 pipeline — do not use it.) -->
+      <img src="assets/images/pipeline.svg"
+           alt="DuplexDrama pipeline: a seed topic passes through five stages — persona and scenario generation; scripts with behavior, emotion, and event annotations; TTS and audio assembly; the script-aware background-channel construction (the highlighted novel step); and a quality validator — producing a long-form full-duplex spoken dialogue."
+           onerror="this.style.display='none'; document.getElementById('pipeline-placeholder').style.display='block';">
+      <div id="pipeline-placeholder" style="display:none;" class="pipeline-placeholder">
+        <p><em>Pipeline diagram — to be inserted (assets/images/pipeline.svg).</em></p>
+      </div>
+      <figcaption class="has-text-centered">
+        A seed topic enters; a long-form full-duplex spoken dialogue with
+        interruptions, emotion, and script-aligned sound events is generated.
+      </figcaption>
+    </figure>
+
+    <!-- Pipeline detail cards commented out 2026-09-04 per user request:
+         the demo page is meant to focus on overview (Abstract) + audio
+         samples; the figure above already gives the five-stage shape, and
+         the cards restate what §3 of the paper says more completely.
+         Uncomment to restore the 5 stage cards.
+    <div class="pipeline-stages columns is-multiline">
+      <div class="column is-half">
+        <div class="stage-card">
+          <span class="stage-num">1</span>
+          <h4 class="stage-title">Persona &amp; Scenario Generation</h4>
+          <p>From a seed topic in a quota-balanced pool (31 macro categories × 170 sub-types), an LLM produces a persona tuple and a scenario tuple. Persona–scenario consistency is the governing constraint: infeasible combinations are rejected.</p>
+        </div>
+      </div>
+      <div class="column is-half">
+        <div class="stage-card">
+          <span class="stage-num">2</span>
+          <h4 class="stage-title">Scripts w. Behavior, Emotion &amp; Event</h4>
+          <p>Three layers of annotation are added to the script. Behavior tags (interruption, backchannel, half-utterance pause) come from rule templates plus LLM placement. Emotion tags use a closed set of 7 emotions. Event tags anchor non-speech sounds to semantically meaningful positions parsed from the script.</p>
+        </div>
+      </div>
+      <div class="column is-half">
+        <div class="stage-card">
+          <span class="stage-num">3</span>
+          <h4 class="stage-title">TTS &amp; Audio Assemble</h4>
+          <p>Turns are synthesized with IndexTTS2, which disentangles speaker identity from emotion. The voice pool holds 64 timbres spanning 13 core personas and 5 age buckets. Per-turn mono renders are then assembled into the HM / AI stereo layout, with sound events scheduled at the script-anchored times.</p>
+        </div>
+      </div>
+      <div class="column is-half">
+        <div class="stage-card is-emph">
+          <span class="stage-num">4</span>
+          <h4 class="stage-title">Construct Background Channel</h4>
+          <p>The HM channel doubles as a script-aware ambient layer — phone ring, traffic, knock, etc. — so a listener hears the world the characters live in, distinct from the AI speaker's clean voice. This is the script-aware event injection the dataset is built around.</p>
+        </div>
+      </div>
+      <div class="column is-half">
+        <div class="stage-card">
+          <span class="stage-num">5</span>
+          <h4 class="stage-title">Quality Validator</h4>
+          <p>A validator checks the assembled clip against persona, speaker, and event placements, and rejects samples that fail script–audio consistency, NISQA-TTS quality, or duration constraints. Survivors form the released split.</p>
+        </div>
+      </div>
+    </div>
+    -->
+  </div>
+</section>
+
+<!-- ============================================================
+     §6 CONTRIBUTIONS — REMOVED.
+     It restated the Abstract's four dimensions and the pipeline
+     summary almost verbatim, adding length without adding content.
+============================================================ -->
+
+<!-- ============================================================
+     §7 AUDIO SAMPLE SHOWCASE — the heart of the page
+============================================================ -->
+<section class="section audio-section" id="audio">
+  <div class="container">
+
+    <h3 class="title is-3 section-heading has-text-centered">Listen to DuplexDrama</h3>
+    <p class="has-text-centered subtitle-meta">
+        <strong>Ten excerpts</strong> of roughly 60-90 seconds, each cut from a
+        full dialogue around one off-talk or backchannel event.
+        Press play; the two waveforms are the HM and AI channels, so overlapping
+        speech is visible directly. The HM track carries its ambient background,
+        the AI track is speech only — click either channel label to mute it and
+        hear them apart.
+    </p>
+    <p class="has-text-centered subtitle-meta">
+        <i class="fas fa-wave-square" aria-hidden="true"></i>
+        <strong>Pre-mixed for clarity</strong>: for visual cleanliness, the
+        HM and ambient background have already been summed into one mono
+        file; the AI channel is delivered without any background mixed in.
+        What you hear here matches what a model trained on the dataset would
+        see in the corresponding stereo output (ch0 = HM+bg, ch1 = AI only).
+    </p>
+
+    <p class="has-text-centered excerpt-disclaimer">
+        <i class="fas fa-info-circle"></i>
+        <strong>Note</strong>: these are <em>excerpts</em>, not complete
+        dialogues — cut this way so the dataset's characteristics are audible at
+        a glance rather than buried in a several-minute recording.
+        Expand "Transcript" to read every turn in the excerpt; the event turn is
+        highlighted in amber.
+    </p>
+
+    <div class="columns is-multiline showcase-grid">
+      <div class="column is-half">
+      <div class="duplex showcase-card"
+           data-hm-opus="assets/audio/_showcase/hl01_off-talk_hm.opus" data-hm-m4a="assets/audio/_showcase/hl01_off-talk_hm.m4a"
+           data-ai-opus="assets/audio/_showcase/hl01_off-talk_ai.opus" data-ai-m4a="assets/audio/_showcase/hl01_off-talk_ai.m4a"
+           data-label="HR与违纪员工教育劝导 · 对其他人说话 · event t=143.0s · clip [83.2, 145.5]s">
+        <div class="card-header">
+          <span class="label-badge off-talk-badge"
+                title="annotation label: 对其他人说话 / off_talk">Off-talk</span>
+          <span class="dlg-id">#0003</span>
+        </div>
+        <p class="scenario-title">HR与违纪员工教育劝导</p>
+        <p class="excerpt-note">
+          <i class="fas fa-info-circle"></i>
+          <strong>1:02</strong> excerpt (not the full dialogue) —
+          9 turns, turns <strong>t11–t19</strong> of the full dialogue; the event is turn <strong>9/9</strong> here (t19, HM, at 0:59)
+        </p>
+        <div class="wave-stack">
+          <div class="wave wave-hm" aria-label="HM channel waveform"></div>
+          <div class="wave wave-ai" aria-label="AI channel waveform"></div>
+          <div class="shared-cursor" aria-hidden="true"></div>
+        </div>
+        <div class="ctl">
+          <button type="button" class="button is-small is-primary play" aria-pressed="false" aria-label="Play excerpt 1">▶ Play</button>
+          <span class="t">0:00</span>
+          <span class="key">
+            <span class="ch-hint">click to mute track</span>
+            <button type="button" class="ch-toggle ch-hm" data-ch="0"
+                    aria-pressed="false"
+                    title="Click to mute the HM track (speech with background)">
+              <i class="sw h"></i> HM <span class="ch-note">w. bg</span>
+            </button>
+            <button type="button" class="ch-toggle ch-ai" data-ch="1"
+                    aria-pressed="false"
+                    title="Click to mute the AI track (speech without background)">
+              <i class="sw a"></i> AI <span class="ch-note">w/o bg</span>
+            </button>
+          </span>
+        </div>
+        <p class="sound-strip"><i class="fas fa-volume-high"></i> <span class="sound-label">Sound events · 1</span><button type="button" class="sound-chip" data-start="33.040" title="body_shift_cloth_move · AI+HM channel · 0.30s"><i class="fas fa-person-walking"></i><span class="sound-name">body shift / cloth move</span><span class="sound-ts">0:33</span><span class=chip-int>low</span></button></p>
+        <details class="context-box">
+          <summary>Persona &amp; Scenario</summary>
+          <div class="context-body">
+            <dl class="ctx-grid"><div class="ctx-row"><dt>Topic</dt><dd>HR与违纪员工教育劝导</dd></div><div class="ctx-row"><dt>Goal</dt><dd>HR与违纪员工教育劝导</dd></div><div class="ctx-row"><dt>Location</dt><dd>HR办公室小圆桌</dd></div><div class="ctx-row"><dt>Interaction</dt><dd>HR与违纪员工教育劝导</dd></div><div class="ctx-row"><dt>Medium</dt><dd>face_to_face</dd></div><div class="ctx-row"><dt>Spatial mode</dt><dd>shared</dd></div><div class="ctx-row"><dt>Ambience</dt><dd>HR办公室小圆桌 (office)</dd></div></dl>
+            <div class="persona-grid">
+              <div class="persona spk-ai">
+              <div class="persona-head">
+                <span class="persona-role">AI</span>
+                <span class="persona-name">杨莉</span>
+                <span class="persona-meta">人力资源部主管 · age 33 · 女</span>
+              </div>
+              <div class="persona-tag">干练白领 / 飒爽御姐</div>
+              <div class="persona-traits">有耐心、善解人意、原则性强、语气温和但不容敷衍</div>
+              <blockquote class="persona-intro">我是人力资源部主管杨莉，做了五年HR，习惯先了解原因再下结论，相信大部分员工都有苦衷。</blockquote>
+            </div><div class="persona spk-hm">
+              <div class="persona-head">
+                <span class="persona-role">HM</span>
+                <span class="persona-name">李阳</span>
+                <span class="persona-meta">销售部员工 · age 28 · 男</span>
+              </div>
+              <div class="persona-tag">慵懒社畜 / 废柴青年</div>
+              <div class="persona-traits">要面子、有些倔、嘴硬心软、内心其实很感激别人的关心</div>
+              <blockquote class="persona-intro">我是销售部李阳，入职两年，业绩中等，最近母亲生病，我压力很大，不想让同事知道家里情况。</blockquote>
+            </div>
+            </div>
+          </div>
+        </details>
+        <details class="transcript-box">
+          <summary>Transcript (9 turns)</summary>
+          <ol class="transcript">
+            <li class="turn spk-hm" data-start="0.300" data-end="9.899"><span class="turn-ts">0:00</span><span class="turn-spk">HM</span><span class="turn-text">那都是以前的事儿了……最近太累，闹钟坏了没听见，加上早高峰堵得要死，我真不是故意违纪的。</span></li>
+            <li class="turn spk-ai" data-start="10.199" data-end="19.759"><span class="turn-ts">0:10</span><span class="turn-spk">AI</span><span class="turn-text">你都入职两年了，通勤路线门儿清吧？连续两周天天九点半才到，这怎么也说不过去啊。是不是家里遇到什么难处了？</span></li>
+            <li class="turn spk-hm" data-start="19.279" data-end="25.860"><span class="turn-ts">0:19</span><span class="turn-spk">HM</span><span class="turn-text">哎呀我就是这段时间作息没调过来！您觉得要开就开吧，我没意见。</span></li>
+            <li class="turn spk-ai" data-start="26.160" data-end="33.040"><span class="turn-ts">0:26</span><span class="turn-spk">AI</span><span class="turn-text">我要是真想按流程办，就不会特意把你叫到这张小圆桌来了，我就想听你句实话。</span></li>
+            <li class="turn spk-hm" data-start="33.340" data-end="38.482"><span class="turn-ts">0:33</span><span class="turn-spk">HM</span><span class="turn-text">我没啥想法，错了就是错了，您别再追问了行吗？</span></li>
+            <li class="turn spk-ai" data-start="38.782" data-end="47.778"><span class="turn-ts">0:38</span><span class="turn-spk">AI</span><span class="turn-text">我知道你好面子，这我完全能理解，但你啥实情都不肯说，我也没法在王经理那儿给你争取机会啊。</span></li>
+            <li class="turn spk-hm" data-start="48.078" data-end="52.927"><span class="turn-ts">0:48</span><span class="turn-spk">HM</span><span class="turn-text">我用不着谁帮我争取！大不了我重新找份工作就是了。</span></li>
+            <li class="turn spk-ai" data-start="53.227" data-end="61.265"><span class="turn-ts">0:53</span><span class="turn-spk">AI</span><span class="turn-text">你真舍得放掉这两年打拼下来的客户和业绩？你现在这态度，明摆着就是在赌气啊。</span></li>
+            <li class="turn spk-hm is-event ev-off-talk" data-start="59.747" data-end="61.581"><span class="turn-ts">0:59</span><span class="turn-spk">HM</span><span class="turn-text">这鸟飞得真高。<span class="turn-flag">Off-talk</span></span></li>
+          </ol>
+        </details>
+        <noscript><audio controls preload="none" src="assets/audio/_showcase/hl01_off-talk_hm.m4a"></audio></noscript>
+      </div>
+    </div>
+      <div class="column is-half">
+      <div class="duplex showcase-card"
+           data-hm-opus="assets/audio/_showcase/hl02_off-talk_hm.opus" data-hm-m4a="assets/audio/_showcase/hl02_off-talk_hm.m4a"
+           data-ai-opus="assets/audio/_showcase/hl02_off-talk_ai.opus" data-ai-m4a="assets/audio/_showcase/hl02_off-talk_ai.m4a"
+           data-label="大刘与同行喜剧俱乐部拼场 · 对其他人说话 · event t=94.1s · clip [40.9, 101.4]s">
+        <div class="card-header">
+          <span class="label-badge off-talk-badge"
+                title="annotation label: 对其他人说话 / off_talk">Off-talk</span>
+          <span class="dlg-id">#0311</span>
+        </div>
+        <p class="scenario-title">大刘与同行喜剧俱乐部拼场</p>
+        <p class="excerpt-note">
+          <i class="fas fa-info-circle"></i>
+          <strong>1:00</strong> excerpt (not the full dialogue) —
+          7 turns, turns <strong>t5–t11</strong> of the full dialogue; the event is turn <strong>7/7</strong> here (t11, HM, at 0:53)
+        </p>
+        <div class="wave-stack">
+          <div class="wave wave-hm" aria-label="HM channel waveform"></div>
+          <div class="wave wave-ai" aria-label="AI channel waveform"></div>
+          <div class="shared-cursor" aria-hidden="true"></div>
+        </div>
+        <div class="ctl">
+          <button type="button" class="button is-small is-primary play" aria-pressed="false" aria-label="Play excerpt 2">▶ Play</button>
+          <span class="t">0:00</span>
+          <span class="key">
+            <span class="ch-hint">click to mute track</span>
+            <button type="button" class="ch-toggle ch-hm" data-ch="0"
+                    aria-pressed="false"
+                    title="Click to mute the HM track (speech with background)">
+              <i class="sw h"></i> HM <span class="ch-note">w. bg</span>
+            </button>
+            <button type="button" class="ch-toggle ch-ai" data-ch="1"
+                    aria-pressed="false"
+                    title="Click to mute the AI track (speech without background)">
+              <i class="sw a"></i> AI <span class="ch-note">w/o bg</span>
+            </button>
+          </span>
+        </div>
+        <p class="sound-strip"><i class="fas fa-volume-high"></i> <span class="sound-label">Sound events · 2</span><button type="button" class="sound-chip" data-start="0.000" title="body_shift_cloth_move · AI+HM channel · 0.30s"><i class="fas fa-person-walking"></i><span class="sound-name">body shift / cloth move</span><span class="sound-ts">0:00</span><span class=chip-int>low</span></button><button type="button" class="sound-chip" data-start="52.047" title="body_shift_cloth_move · AI+HM channel · 0.30s"><i class="fas fa-person-walking"></i><span class="sound-name">body shift / cloth move</span><span class="sound-ts">0:52</span><span class=chip-int>low</span></button></p>
+        <details class="context-box">
+          <summary>Persona &amp; Scenario</summary>
+          <div class="context-body">
+            <dl class="ctx-grid"><div class="ctx-row"><dt>Topic</dt><dd>大刘与同行喜剧俱乐部拼场</dd></div><div class="ctx-row"><dt>Goal</dt><dd>大刘与同行喜剧俱乐部拼场</dd></div><div class="ctx-row"><dt>Location</dt><dd>笑点低喜剧俱乐部观众席</dd></div><div class="ctx-row"><dt>Interaction</dt><dd>大刘与同行喜剧俱乐部拼场</dd></div><div class="ctx-row"><dt>Medium</dt><dd>face_to_face</dd></div><div class="ctx-row"><dt>Spatial mode</dt><dd>shared</dd></div><div class="ctx-row"><dt>Ambience</dt><dd>笑点低喜剧俱乐部观众席 (cafe_restaurant)</dd></div></dl>
+            <div class="persona-grid">
+              <div class="persona spk-ai">
+              <div class="persona-head">
+                <span class="persona-role">AI</span>
+                <span class="persona-name">大刘</span>
+                <span class="persona-meta">脱口秀演员 · age 32 · 男</span>
+              </div>
+              <div class="persona-tag">严肃男老师 / 老教授</div>
+              <div class="persona-traits">沉稳、内敛、爱思考、有点清高、对喜剧有哲学追求</div>
+              <blockquote class="persona-intro">我是大刘，32岁，讲脱口秀六年了，我相信笑是思考的副产品，我的段子有深度，但有时节奏慢会冷场。</blockquote>
+            </div><div class="persona spk-hm">
+              <div class="persona-head">
+                <span class="persona-role">HM</span>
+                <span class="persona-name">文文</span>
+                <span class="persona-meta">脱口秀演员 · age 26 · 女</span>
+              </div>
+              <div class="persona-tag">元气少女 / 萝莉</div>
+              <div class="persona-traits">外向、直爽、大大咧咧、内心敏感、用外表的自信掩盖自卑</div>
+              <blockquote class="persona-intro">我是文文，26岁，入行两年，大家都叫我炸场王，我喜欢用夸张的表演让观众笑，但我也想写出有深度的段子。</blockquote>
+            </div>
+            </div>
+          </div>
+        </details>
+        <details class="transcript-box">
+          <summary>Transcript (7 turns)</summary>
+          <ol class="transcript">
+            <li class="turn spk-hm" data-start="0.300" data-end="12.379"><span class="turn-ts">0:00</span><span class="turn-spk">HM</span><span class="turn-text">刘哥您既然都这么说了，那我可真直说了啊。您铺垫太长了，头一分多钟全唠医院挂<span class="pause-mark" title="in-sentence pause">&#9209; 0.9s</span>号那堆逻辑，观众早走神了，能量掉得太快。</span></li>
+            <li class="turn spk-ai" data-start="12.679" data-end="20.529"><span class="turn-ts">0:12</span><span class="turn-spk">AI</span><span class="turn-text">可那是为了最后“面试官就是主治医师”的包袱铺垫啊，没前面那憋屈感，哪来后面的反差笑点啊？</span></li>
+            <li class="turn spk-hm" data-start="20.829" data-end="31.569"><span class="turn-ts">0:20</span><span class="turn-spk">HM</span><span class="turn-text">理是这么个理，但舞台可不等人啊！您前面压得太死，观众都觉得这事堵得慌，等您甩包袱的时候早笑不动了。</span></li>
+            <li class="turn spk-ai" data-start="31.868" data-end="40.895"><span class="turn-ts">0:31</span><span class="turn-spk">AI</span><span class="turn-text">哦合着我不该铺那么多细节？可没这些细碎的东西，中年人怕体检那心态哪能立得起来啊？</span></li>
+            <li class="turn spk-hm" data-start="41.195" data-end="52.047"><span class="turn-ts">0:41</span><span class="turn-spk">HM</span><span class="turn-text">立住人物和让观众笑根本两码事！您总爱在甩包袱前停两三秒留思考空间，今天这场子，留白直接就成冷场了。</span></li>
+            <li class="turn spk-ai" data-start="52.347" data-end="59.350"><span class="turn-ts">0:52</span><span class="turn-spk">AI</span><span class="turn-text">真冷场啊……合着我这点所谓的艺术坚持，在冷场面前屁都不是啊。</span></li>
+            <li class="turn spk-hm is-event ev-off-talk" data-start="53.197" data-end="56.717"><span class="turn-ts">0:53</span><span class="turn-spk">HM</span><span class="turn-text">嚯，这才几点啊，走这么早。<span class="turn-flag">Off-talk</span></span></li>
+          </ol>
+        </details>
+        <noscript><audio controls preload="none" src="assets/audio/_showcase/hl02_off-talk_hm.m4a"></audio></noscript>
+      </div>
+    </div>
+      <div class="column is-half">
+      <div class="duplex showcase-card"
+           data-hm-opus="assets/audio/_showcase/hl03_off-talk_hm.opus" data-hm-m4a="assets/audio/_showcase/hl03_off-talk_hm.m4a"
+           data-ai-opus="assets/audio/_showcase/hl03_off-talk_ai.opus" data-ai-m4a="assets/audio/_showcase/hl03_off-talk_ai.m4a"
+           data-label="女脱口秀与健身教练更衣室笑谈 · 对其他人说话 · event t=116.9s · clip [57.5, 120.1]s">
+        <div class="card-header">
+          <span class="label-badge off-talk-badge"
+                title="annotation label: 对其他人说话 / off_talk">Off-talk</span>
+          <span class="dlg-id">#0326</span>
+        </div>
+        <p class="scenario-title">女脱口秀与健身教练更衣室笑谈</p>
+        <p class="excerpt-note">
+          <i class="fas fa-info-circle"></i>
+          <strong>1:02</strong> excerpt (not the full dialogue) —
+          9 turns, turns <strong>t7–t15</strong> of the full dialogue; the event is turn <strong>9/9</strong> here (t15, HM, at 0:59)
+        </p>
+        <div class="wave-stack">
+          <div class="wave wave-hm" aria-label="HM channel waveform"></div>
+          <div class="wave wave-ai" aria-label="AI channel waveform"></div>
+          <div class="shared-cursor" aria-hidden="true"></div>
+        </div>
+        <div class="ctl">
+          <button type="button" class="button is-small is-primary play" aria-pressed="false" aria-label="Play excerpt 3">▶ Play</button>
+          <span class="t">0:00</span>
+          <span class="key">
+            <span class="ch-hint">click to mute track</span>
+            <button type="button" class="ch-toggle ch-hm" data-ch="0"
+                    aria-pressed="false"
+                    title="Click to mute the HM track (speech with background)">
+              <i class="sw h"></i> HM <span class="ch-note">w. bg</span>
+            </button>
+            <button type="button" class="ch-toggle ch-ai" data-ch="1"
+                    aria-pressed="false"
+                    title="Click to mute the AI track (speech without background)">
+              <i class="sw a"></i> AI <span class="ch-note">w/o bg</span>
+            </button>
+          </span>
+        </div>
+        <p class="sound-strip is-empty"><i class="fas fa-volume-off"></i> No sound events in this excerpt</p>
+        <details class="context-box">
+          <summary>Persona &amp; Scenario</summary>
+          <div class="context-body">
+            <dl class="ctx-grid"><div class="ctx-row"><dt>Topic</dt><dd>女脱口秀与健身教练更衣室笑谈</dd></div><div class="ctx-row"><dt>Goal</dt><dd>女脱口秀与健身教练更衣室笑谈</dd></div><div class="ctx-row"><dt>Location</dt><dd>铁血猩猩健身房B1层女更衣室外木质长椅</dd></div><div class="ctx-row"><dt>Interaction</dt><dd>女脱口秀与健身教练更衣室笑谈</dd></div><div class="ctx-row"><dt>Medium</dt><dd>face_to_face</dd></div><div class="ctx-row"><dt>Spatial mode</dt><dd>shared</dd></div><div class="ctx-row"><dt>Ambience</dt><dd>铁血猩猩健身房B1层女更衣室外木质长椅 (public_lobby)</dd></div></dl>
+            <div class="persona-grid">
+              <div class="persona spk-ai">
+              <div class="persona-head">
+                <span class="persona-role">AI</span>
+                <span class="persona-name">方慢慢</span>
+                <span class="persona-meta">脱口秀演员 · age 30 · 女</span>
+              </div>
+              <div class="persona-tag">邻家女孩 / 知心闺蜜</div>
+              <div class="persona-traits">嘴比脑子快、擅长自黑、用幽默掩盖脆弱、私下在意他人评价</div>
+              <blockquote class="persona-intro">我是方慢慢，30岁，单口喜剧新人，靠“丧但顽强”风格圈粉，被经纪人逼着来健身，结果成了健身房行走的段子制造机。</blockquote>
+            </div><div class="persona spk-hm">
+              <div class="persona-head">
+                <span class="persona-role">HM</span>
+                <span class="persona-name">孟玲</span>
+                <span class="persona-meta">健身教练 · age 35 · 女</span>
+              </div>
+              <div class="persona-tag">干练白领 / 飒爽御姐</div>
+              <div class="persona-traits">直爽、教学严厉但心细、外表硬朗内心柔软、独自抚养女儿、不轻易诉苦</div>
+              <blockquote class="persona-intro">我是孟玲，35岁，退役健美选手，现在做健身教练，一个人带女儿，脾气直，刀子嘴豆腐心。</blockquote>
+            </div>
+            </div>
+          </div>
+        </details>
+        <details class="transcript-box">
+          <summary>Transcript (9 turns)</summary>
+          <ol class="transcript">
+            <li class="turn spk-hm" data-start="0.300" data-end="6.640"><span class="turn-ts">0:00</span><span class="turn-spk">HM</span><span class="turn-text">你这丫头嘴可太贫了，刚摔的时候怎么不见你吱声？</span></li>
+            <li class="turn spk-ai" data-start="6.940" data-end="18.069"><span class="turn-ts">0:06</span><span class="turn-spk">AI</span><span class="turn-text">我那是疼得喘不上气啊！都怪丹哥嫌我形体差，硬塞给我四十八节私教课，这才十二节，我半条命都快交代在这了。</span></li>
+            <li class="turn spk-hm" data-start="18.369" data-end="25.669"><span class="turn-ts">0:18</span><span class="turn-spk">HM</span><span class="turn-text">你们经纪人也是为你好，你那核心力量弱得跟刚孵出来的小鸡崽似的，是得练练。</span></li>
+            <li class="turn spk-ai" data-start="25.969" data-end="35.840"><span class="turn-ts">0:25</span><span class="turn-spk">AI</span><span class="turn-text">为我好也不能往死里造啊！我一个说脱口秀的靠嘴吃饭，又不是靠练胸大肌，他摆明了就是拿我冲业绩嘛！</span></li>
+            <li class="turn spk-hm" data-start="36.140" data-end="43.780"><span class="turn-ts">0:36</span><span class="turn-spk">HM</span><span class="turn-text">你这小嗑一套一套的，自己的糗事转头就编成段子，是不是觉得特好玩啊？</span></li>
+            <li class="turn spk-ai" data-start="44.280" data-end="47.864"><span class="turn-ts">0:44</span><span class="turn-spk">AI</span><span class="turn-text">那可不，这都是现成的素材啊！</span></li>
+            <li class="turn spk-hm" data-start="48.164" data-end="57.136"><span class="turn-ts">0:48</span><span class="turn-spk">HM</span><span class="turn-text">慢慢，先别笑了。你天天这么嬉皮笑脸，把自己的难堪拆成段子给人看，心里其实挺不好受的吧？</span></li>
+            <li class="turn spk-ai" data-start="57.636" data-end="61.743"><span class="turn-ts">0:57</span><span class="turn-spk">AI</span><span class="turn-text">啊？孟姐你咋突然走心了，我哪有难受啊？</span></li>
+            <li class="turn spk-hm is-event ev-off-talk" data-start="59.326" data-end="61.493"><span class="turn-ts">0:59</span><span class="turn-spk">HM</span><span class="turn-text">看啥看，换衣服呢。<span class="turn-flag">Off-talk</span></span></li>
+          </ol>
+        </details>
+        <noscript><audio controls preload="none" src="assets/audio/_showcase/hl03_off-talk_hm.m4a"></audio></noscript>
+      </div>
+    </div>
+      <div class="column is-half">
+      <div class="duplex showcase-card"
+           data-hm-opus="assets/audio/_showcase/hl04_off-talk_hm.opus" data-hm-m4a="assets/audio/_showcase/hl04_off-talk_hm.m4a"
+           data-ai-opus="assets/audio/_showcase/hl04_off-talk_ai.opus" data-ai-m4a="assets/audio/_showcase/hl04_off-talk_ai.m4a"
+           data-label="赵刚与刘强玻璃内外的叮嘱 · 对其他人说话 · event t=132.9s · clip [77.2, 142.6]s">
+        <div class="card-header">
+          <span class="label-badge off-talk-badge"
+                title="annotation label: 对其他人说话 / off_talk">Off-talk</span>
+          <span class="dlg-id">#1135</span>
+        </div>
+        <p class="scenario-title">赵刚与刘强玻璃内外的叮嘱</p>
+        <p class="excerpt-note">
+          <i class="fas fa-info-circle"></i>
+          <strong>1:05</strong> excerpt (not the full dialogue) —
+          8 turns, turns <strong>t10–t17</strong> of the full dialogue; the event is turn <strong>8/8</strong> here (t17, HM, at 0:55)
+        </p>
+        <div class="wave-stack">
+          <div class="wave wave-hm" aria-label="HM channel waveform"></div>
+          <div class="wave wave-ai" aria-label="AI channel waveform"></div>
+          <div class="shared-cursor" aria-hidden="true"></div>
+        </div>
+        <div class="ctl">
+          <button type="button" class="button is-small is-primary play" aria-pressed="false" aria-label="Play excerpt 4">▶ Play</button>
+          <span class="t">0:00</span>
+          <span class="key">
+            <span class="ch-hint">click to mute track</span>
+            <button type="button" class="ch-toggle ch-hm" data-ch="0"
+                    aria-pressed="false"
+                    title="Click to mute the HM track (speech with background)">
+              <i class="sw h"></i> HM <span class="ch-note">w. bg</span>
+            </button>
+            <button type="button" class="ch-toggle ch-ai" data-ch="1"
+                    aria-pressed="false"
+                    title="Click to mute the AI track (speech without background)">
+              <i class="sw a"></i> AI <span class="ch-note">w/o bg</span>
+            </button>
+          </span>
+        </div>
+        <p class="sound-strip is-empty"><i class="fas fa-volume-off"></i> No sound events in this excerpt</p>
+        <details class="context-box">
+          <summary>Persona &amp; Scenario</summary>
+          <div class="context-body">
+            <dl class="ctx-grid"><div class="ctx-row"><dt>Topic</dt><dd>赵刚与刘强玻璃内外的叮嘱</dd></div><div class="ctx-row"><dt>Goal</dt><dd>赵刚与刘强玻璃内外的叮嘱</dd></div><div class="ctx-row"><dt>Interaction</dt><dd>赵刚与刘强玻璃内外的叮嘱</dd></div><div class="ctx-row"><dt>Medium</dt><dd>face_to_face</dd></div><div class="ctx-row"><dt>Spatial mode</dt><dd>shared</dd></div><div class="ctx-row"><dt>Ambience</dt><dd>监狱探视室 (quiet_indoor)</dd></div></dl>
+            <div class="persona-grid">
+              <div class="persona spk-ai">
+              <div class="persona-head">
+                <span class="persona-role">AI</span>
+                <span class="persona-name">赵刚</span>
+                <span class="persona-meta">退休工人 · age 62 · 男</span>
+              </div>
+              <div class="persona-tag">豪爽大叔 / 邻里大爷</div>
+              <div class="persona-traits">固执、爱面子、不善言辞、嘴硬心软</div>
+              <blockquote class="persona-intro">我是一辈子老实本分的退休工人，儿子不争气让我丢尽了脸，但我就想他踏踏实实过日子，别再走歪路。</blockquote>
+            </div><div class="persona spk-hm">
+              <div class="persona-head">
+                <span class="persona-role">HM</span>
+                <span class="persona-name">刘强</span>
+                <span class="persona-meta">前金融公司销售（即将出狱） · age 28 · 男</span>
+              </div>
+              <div class="persona-tag">慵懒社畜 / 废柴青年</div>
+              <div class="persona-traits">表面顺从、内心叛逆、自尊心极强、渴望证明自己</div>
+              <blockquote class="persona-intro">我刚出狱，不想一辈子搬货，我有头脑，想跟大飞干点正经互联网项目，证明自己不靠父亲也能活得好。</blockquote>
+            </div>
+            </div>
+          </div>
+        </details>
+        <details class="transcript-box">
+          <summary>Transcript (8 turns)</summary>
+          <ol class="transcript">
+            <li class="turn spk-ai" data-start="0.300" data-end="9.707"><span class="turn-ts">0:00</span><span class="turn-spk">AI</span><span class="turn-text">我特意找了你李叔，他现在是顺达物流园的车队队长，给你安排了个理货员的岗，你一出来就能直接上班。</span></li>
+            <li class="turn spk-hm" data-start="10.007" data-end="19.136"><span class="turn-ts">0:10</span><span class="turn-spk">HM</span><span class="turn-text">理货员？李叔？合着您让我去物流园扛箱子啊？这活儿累得要死，能干出啥名堂来？</span></li>
+            <li class="turn spk-ai" data-start="19.436" data-end="30.744"><span class="turn-ts">0:19</span><span class="turn-spk">AI</span><span class="turn-text">怎么就没出息了？人家管吃管住，一个月给你开四千五！你刚出来有个正经落脚地，踏踏实实干活不比啥都强？</span></li>
+            <li class="turn spk-hm" data-start="31.044" data-end="37.908"><span class="turn-ts">0:31</span><span class="turn-spk">HM</span><span class="turn-text">四千五？这点钱够塞牙缝的啊？这种卖力气的苦活儿我可干不了。</span></li>
+            <li class="turn spk-ai" data-start="38.208" data-end="45.819"><span class="turn-ts">0:38</span><span class="turn-spk">AI</span><span class="turn-text">怎么干不了？这钱干干净净，是你凭自己手挣的，花着也踏实！你刚出来还挑三拣四的？</span></li>
+            <li class="turn spk-hm" data-start="46.119" data-end="53.823"><span class="turn-ts">0:46</span><span class="turn-spk">HM</span><span class="turn-text">我不是挑活儿，是我根本就不懂理货那套流程啊！我总得找个有<span class="pause-mark" title="in-sentence pause">&#9209; 0.2s</span>发展空间的事儿干吧？</span></li>
+            <li class="turn spk-ai" data-start="54.123" data-end="64.400"><span class="turn-ts">0:54</span><span class="turn-spk">AI</span><span class="turn-text">发展前途？三年前你搞那汇金理财倒是觉得有前途！结果呢？违规销售坑老百姓血汗钱，把自己整进号子里来了！</span></li>
+            <li class="turn spk-hm is-event ev-off-talk" data-start="55.704" data-end="58.562"><span class="turn-ts">0:55</span><span class="turn-spk">HM</span><span class="turn-text">警官，还有多久到时间？<span class="turn-flag">Off-talk</span></span></li>
+          </ol>
+        </details>
+        <noscript><audio controls preload="none" src="assets/audio/_showcase/hl04_off-talk_hm.m4a"></audio></noscript>
+      </div>
+    </div>
+      <div class="column is-half">
+      <div class="duplex showcase-card"
+           data-hm-opus="assets/audio/_showcase/hl05_off-talk_hm.opus" data-hm-m4a="assets/audio/_showcase/hl05_off-talk_hm.m4a"
+           data-ai-opus="assets/audio/_showcase/hl05_off-talk_ai.opus" data-ai-m4a="assets/audio/_showcase/hl05_off-talk_ai.m4a"
+           data-label="闺蜜看展画里人生 · 对其他人说话 · event t=106.7s · clip [48.4, 110.1]s">
+        <div class="card-header">
+          <span class="label-badge off-talk-badge"
+                title="annotation label: 对其他人说话 / off_talk">Off-talk</span>
+          <span class="dlg-id">#1216</span>
+        </div>
+        <p class="scenario-title">闺蜜看展画里人生</p>
+        <p class="excerpt-note">
+          <i class="fas fa-info-circle"></i>
+          <strong>1:01</strong> excerpt (not the full dialogue) —
+          10 turns, turns <strong>t7–t16</strong> of the full dialogue; the event is turn <strong>10/10</strong> here (t16, HM, at 0:58)
+        </p>
+        <div class="wave-stack">
+          <div class="wave wave-hm" aria-label="HM channel waveform"></div>
+          <div class="wave wave-ai" aria-label="AI channel waveform"></div>
+          <div class="shared-cursor" aria-hidden="true"></div>
+        </div>
+        <div class="ctl">
+          <button type="button" class="button is-small is-primary play" aria-pressed="false" aria-label="Play excerpt 5">▶ Play</button>
+          <span class="t">0:00</span>
+          <span class="key">
+            <span class="ch-hint">click to mute track</span>
+            <button type="button" class="ch-toggle ch-hm" data-ch="0"
+                    aria-pressed="false"
+                    title="Click to mute the HM track (speech with background)">
+              <i class="sw h"></i> HM <span class="ch-note">w. bg</span>
+            </button>
+            <button type="button" class="ch-toggle ch-ai" data-ch="1"
+                    aria-pressed="false"
+                    title="Click to mute the AI track (speech without background)">
+              <i class="sw a"></i> AI <span class="ch-note">w/o bg</span>
+            </button>
+          </span>
+        </div>
+        <p class="sound-strip"><i class="fas fa-volume-high"></i> <span class="sound-label">Sound events · 1</span><button type="button" class="sound-chip" data-start="49.381" title="body_shift_cloth_move · AI+HM channel · 0.30s"><i class="fas fa-person-walking"></i><span class="sound-name">body shift / cloth move</span><span class="sound-ts">0:49</span><span class=chip-int>med</span></button></p>
+        <details class="context-box">
+          <summary>Persona &amp; Scenario</summary>
+          <div class="context-body">
+            <dl class="ctx-grid"><div class="ctx-row"><dt>Topic</dt><dd>闺蜜看展画里人生</dd></div><div class="ctx-row"><dt>Goal</dt><dd>闺蜜看展画里人生</dd></div><div class="ctx-row"><dt>Location</dt><dd>星芒美术馆三楼抽象艺术展厅</dd></div><div class="ctx-row"><dt>Interaction</dt><dd>闺蜜看展画里人生</dd></div><div class="ctx-row"><dt>Medium</dt><dd>face_to_face</dd></div><div class="ctx-row"><dt>Spatial mode</dt><dd>shared</dd></div><div class="ctx-row"><dt>Ambience</dt><dd>星芒美术馆三楼抽象艺术展厅 (quiet_indoor)</dd></div></dl>
+            <div class="persona-grid">
+              <div class="persona spk-ai">
+              <div class="persona-head">
+                <span class="persona-role">AI</span>
+                <span class="persona-name">林悦</span>
+                <span class="persona-meta">会计 · age 30 · 女</span>
+              </div>
+              <div class="persona-tag">邻家女孩 / 知心闺蜜</div>
+              <div class="persona-traits">敏感、不自信、容易退缩、但内心渴望艺术</div>
+              <blockquote class="persona-intro">我是林悦，今年30岁，现在在一家公司做会计。每天对着枯燥的数字，心里总觉得空落落的。其实我高中时候学过画画，但爸妈说艺术不能当饭吃，我就放弃了。这么多年没碰过画笔，我都不敢再想了。</blockquote>
+            </div><div class="persona spk-hm">
+              <div class="persona-head">
+                <span class="persona-role">HM</span>
+                <span class="persona-name">苏晴</span>
+                <span class="persona-meta">花艺师 · age 31 · 女</span>
+              </div>
+              <div class="persona-tag">邻家女孩 / 知心闺蜜</div>
+              <div class="persona-traits">乐观、积极、有感染力、善于鼓励人</div>
+              <blockquote class="persona-intro">我叫苏晴，31岁，自己开了间花店叫晴天花艺。我这人性格开朗，喜欢一切美的东西。悦悦是我最好的闺蜜，她特别有才华，可就是总不自信。这次我要把她拉回来，让她重新画画！</blockquote>
+            </div>
+            </div>
+          </div>
+        </details>
+        <details class="transcript-box">
+          <summary>Transcript (10 turns)</summary>
+          <ol class="transcript">
+            <li class="turn spk-ai" data-start="0.300" data-end="7.962"><span class="turn-ts">0:00</span><span class="turn-spk">AI</span><span class="turn-text">那是你们懂艺术的人能get到的，我这种天天敲计算器的俗人，哪有那审美啊。</span></li>
+            <li class="turn spk-hm" data-start="8.262" data-end="13.202"><span class="turn-ts">0:08</span><span class="turn-spk">HM</span><span class="turn-text">瞎说啥呢，你当年可是咱们宿舍公认的大才女啊。</span></li>
+            <li class="turn spk-ai" data-start="13.502" data-end="21.364"><span class="turn-ts">0:13</span><span class="turn-spk">AI</span><span class="turn-text">那都是多少年前的老黄历了，高三之后我就没碰过画笔，现在连握笔姿势估计都忘干净了。</span></li>
+            <li class="turn spk-hm" data-start="21.664" data-end="25.236"><span class="turn-ts">0:21</span><span class="turn-spk">HM</span><span class="turn-text">手感哪有那么容易忘啊，骗谁呢。</span></li>
+            <li class="turn spk-ai" data-start="25.536" data-end="34.923"><span class="turn-ts">0:25</span><span class="turn-spk">AI</span><span class="turn-text">真不是我找借口，是真不行啊，我早就没那艺术细胞了，现在拿笔估计连直线都画不直，纯纯丢人。</span></li>
+            <li class="turn spk-hm" data-start="35.223" data-end="43.548"><span class="turn-ts">0:35</span><span class="turn-spk">HM</span><span class="turn-text">你对自己也太没信心了吧？忘了大二你在宿舍阳台画的那<span class="pause-mark" title="in-sentence pause">&#9209; 1.3s</span>幅画啦？</span></li>
+            <li class="turn spk-ai" data-start="43.848" data-end="49.381"><span class="turn-ts">0:43</span><span class="turn-spk">AI</span><span class="turn-text">大二？我大二还画过啥啊，我怎么不记得。</span></li>
+            <li class="turn spk-hm" data-start="49.681" data-end="55.952"><span class="turn-ts">0:49</span><span class="turn-spk">HM</span><span class="turn-text">我怎么可能记错！你等下啊，我手机里一直存着那张照片呢，我找出来给你看。</span></li>
+            <li class="turn spk-ai" data-start="56.252" data-end="60.595"><span class="turn-ts">0:56</span><span class="turn-spk">AI</span><span class="turn-text">哎你别找了，万一是黑历史我可没脸看。</span></li>
+            <li class="turn spk-hm is-event ev-off-talk" data-start="58.343" data-end="60.754"><span class="turn-ts">0:58</span><span class="turn-spk">HM</span><span class="turn-text">这么快就清场了？<span class="turn-flag">Off-talk</span></span></li>
+          </ol>
+        </details>
+        <noscript><audio controls preload="none" src="assets/audio/_showcase/hl05_off-talk_hm.m4a"></audio></noscript>
+      </div>
+    </div>
+      <div class="column is-half">
+      <div class="duplex showcase-card"
+           data-hm-opus="assets/audio/_showcase/hl06_off-talk_hm.opus" data-hm-m4a="assets/audio/_showcase/hl06_off-talk_hm.m4a"
+           data-ai-opus="assets/audio/_showcase/hl06_off-talk_ai.opus" data-ai-m4a="assets/audio/_showcase/hl06_off-talk_ai.m4a"
+           data-label="陪跑员与客户晨跑谈心 · 对其他人说话 · event t=75.7s · clip [16.1, 80.7]s">
+        <div class="card-header">
+          <span class="label-badge off-talk-badge"
+                title="annotation label: 对其他人说话 / off_talk">Off-talk</span>
+          <span class="dlg-id">#1298</span>
+        </div>
+        <p class="scenario-title">陪跑员与客户晨跑谈心</p>
+        <p class="excerpt-note">
+          <i class="fas fa-info-circle"></i>
+          <strong>1:04</strong> excerpt (not the full dialogue) —
+          9 turns, turns <strong>t2–t10</strong> of the full dialogue; the event is turn <strong>9/9</strong> here (t10, HM, at 0:59)
+        </p>
+        <div class="wave-stack">
+          <div class="wave wave-hm" aria-label="HM channel waveform"></div>
+          <div class="wave wave-ai" aria-label="AI channel waveform"></div>
+          <div class="shared-cursor" aria-hidden="true"></div>
+        </div>
+        <div class="ctl">
+          <button type="button" class="button is-small is-primary play" aria-pressed="false" aria-label="Play excerpt 6">▶ Play</button>
+          <span class="t">0:00</span>
+          <span class="key">
+            <span class="ch-hint">click to mute track</span>
+            <button type="button" class="ch-toggle ch-hm" data-ch="0"
+                    aria-pressed="false"
+                    title="Click to mute the HM track (speech with background)">
+              <i class="sw h"></i> HM <span class="ch-note">w. bg</span>
+            </button>
+            <button type="button" class="ch-toggle ch-ai" data-ch="1"
+                    aria-pressed="false"
+                    title="Click to mute the AI track (speech without background)">
+              <i class="sw a"></i> AI <span class="ch-note">w/o bg</span>
+            </button>
+          </span>
+        </div>
+        <p class="sound-strip"><i class="fas fa-volume-high"></i> <span class="sound-label">Sound events · 1</span><button type="button" class="sound-chip" data-start="0.000" title="cloth_rustle · AI+HM channel · 0.30s"><i class="fas fa-shirt"></i><span class="sound-name">cloth rustle</span><span class="sound-ts">0:00</span><span class=chip-int>low</span></button></p>
+        <details class="context-box">
+          <summary>Persona &amp; Scenario</summary>
+          <div class="context-body">
+            <dl class="ctx-grid"><div class="ctx-row"><dt>Topic</dt><dd>陪跑员与客户晨跑谈心</dd></div><div class="ctx-row"><dt>Goal</dt><dd>陪跑员与客户晨跑谈心</dd></div><div class="ctx-row"><dt>Location</dt><dd>朝阳公园南门塑胶跑道边</dd></div><div class="ctx-row"><dt>Time of day</dt><dd>清晨6:30</dd></div><div class="ctx-row"><dt>Interaction</dt><dd>陪跑员与客户晨跑谈心</dd></div><div class="ctx-row"><dt>Medium</dt><dd>face_to_face</dd></div><div class="ctx-row"><dt>Spatial mode</dt><dd>shared</dd></div><div class="ctx-row"><dt>Ambience</dt><dd>朝阳公园南门塑胶跑道边，清晨6:30 (street_outdoor)</dd></div></dl>
+            <div class="persona-grid">
+              <div class="persona spk-hm">
+              <div class="persona-head">
+                <span class="persona-role">HM</span>
+                <span class="persona-name">小周</span>
+                <span class="persona-meta">室内设计师 · age 26 · 男</span>
+              </div>
+              <div class="persona-tag">慵懒社畜 / 废柴青年</div>
+              <div class="persona-traits">幽默、容易放弃、爱找借口、但内心渴望改变、被激励后又能坚持</div>
+              <blockquote class="persona-intro">我叫小周，26岁，是一名室内设计师。因为体检报告多项指标飘红，才开始跑步，但总是半途想放弃。今天尤其累，前天熬了夜，现在腿像灌了铅。</blockquote>
+            </div><div class="persona spk-ai">
+              <div class="persona-head">
+                <span class="persona-role">AI</span>
+                <span class="persona-name">阿磊</span>
+                <span class="persona-meta">专业陪跑教练 · age 29 · 男</span>
+              </div>
+              <div class="persona-tag">阳光青年 / 活力学长</div>
+              <div class="persona-traits">坚韧、随和、话不多但每句都在打气、懂得倾听、习惯用跑步节奏调节情绪</div>
+              <blockquote class="persona-intro">我叫阿磊，29岁，陪跑教练。三年前曾因失恋重度抑郁，靠跑步走出低谷，现在把跑步当成治愈自己和他人的方式。</blockquote>
+            </div>
+            </div>
+          </div>
+        </details>
+        <details class="transcript-box">
+          <summary>Transcript (9 turns)</summary>
+          <ol class="transcript">
+            <li class="turn spk-hm" data-start="0.300" data-end="8.137"><span class="turn-ts">0:00</span><span class="turn-spk">HM</span><span class="turn-text">呼……这腿沉得跟绑了俩铅块似的，才跑三公里，我感觉熬了一整宿似的。</span></li>
+            <li class="turn spk-ai" data-start="8.437" data-end="12.450"><span class="turn-ts">0:08</span><span class="turn-spk">AI</span><span class="turn-text">七分半的配速真不算快，你先坐那缓会儿。</span></li>
+            <li class="turn spk-hm" data-start="12.750" data-end="21.008"><span class="turn-ts">0:12</span><span class="turn-spk">HM</span><span class="turn-text">我是真没劲儿了！前天熬大夜赶图到凌晨四点，现在脑壳还嗡嗡直响，跟装了个电钻似的。</span></li>
+            <li class="turn spk-ai" data-start="21.307" data-end="29.301"><span class="turn-ts">0:21</span><span class="turn-spk">AI</span><span class="turn-text">熬夜确实太伤身子。你跟着我节奏调呼吸啊，深吸气……慢慢吐……对，就这么来，别着急。</span></li>
+            <li class="turn spk-hm" data-start="29.801" data-end="37.538"><span class="turn-ts">0:29</span><span class="turn-spk">HM</span><span class="turn-text">磊哥我真没骗你，再硬撑着跑，我这条小命估计就得<span class="pause-mark" title="in-sentence pause">&#9209; 0.1s</span>撂在这跑道上了！</span></li>
+            <li class="turn spk-ai" data-start="37.838" data-end="47.485"><span class="turn-ts">0:37</span><span class="turn-spk">AI</span><span class="turn-text">哪有那么邪乎，这就是典型的极点反应，挺过去就舒服了。我看你这是铁了心要临阵脱逃啊？</span></li>
+            <li class="turn spk-hm" data-start="47.785" data-end="57.207"><span class="turn-ts">0:47</span><span class="turn-spk">HM</span><span class="turn-text">真不是我想逃啊，我是真的一滴都挤不出来了！剩下两公里咱免了行不？陪跑费我全额付，你就当放我一马呗！</span></li>
+            <li class="turn spk-ai" data-start="57.507" data-end="63.774"><span class="turn-ts">0:57</span><span class="turn-spk">AI</span><span class="turn-text">那可不行，规矩你知道的，每次必须跑满五公里，不能随便减距离。</span></li>
+            <li class="turn spk-hm is-event ev-off-talk" data-start="59.587" data-end="63.498"><span class="turn-ts">0:59</span><span class="turn-spk">HM</span><span class="turn-text">这大爷韧带真可以，都快劈叉了。<span class="turn-flag">Off-talk</span></span></li>
+          </ol>
+        </details>
+        <noscript><audio controls preload="none" src="assets/audio/_showcase/hl06_off-talk_hm.m4a"></audio></noscript>
+      </div>
+    </div>
+      <div class="column is-half">
+      <div class="duplex showcase-card"
+           data-hm-opus="assets/audio/_showcase/hl07_backchannel_hm.opus" data-hm-m4a="assets/audio/_showcase/hl07_backchannel_hm.m4a"
+           data-ai-opus="assets/audio/_showcase/hl07_backchannel_ai.opus" data-ai-m4a="assets/audio/_showcase/hl07_backchannel_ai.m4a"
+           data-label="林静与妈妈智能音箱的混乱初体验 · 附和 · event t=77.5s · clip [23.9, 85.2]s">
+        <div class="card-header">
+          <span class="label-badge backchannel-badge"
+                title="annotation label: 附和 / backchannel">Backchannel</span>
+          <span class="dlg-id">#0765</span>
+        </div>
+        <p class="scenario-title">林静与妈妈智能音箱的混乱初体验</p>
+        <p class="excerpt-note">
+          <i class="fas fa-info-circle"></i>
+          <strong>1:01</strong> excerpt (not the full dialogue) —
+          8 turns, turns <strong>t2–t9</strong> of the full dialogue; the event is turn <strong>8/8</strong> here (t9, HM, at 0:53)
+        </p>
+        <div class="wave-stack">
+          <div class="wave wave-hm" aria-label="HM channel waveform"></div>
+          <div class="wave wave-ai" aria-label="AI channel waveform"></div>
+          <div class="shared-cursor" aria-hidden="true"></div>
+        </div>
+        <div class="ctl">
+          <button type="button" class="button is-small is-primary play" aria-pressed="false" aria-label="Play excerpt 7">▶ Play</button>
+          <span class="t">0:00</span>
+          <span class="key">
+            <span class="ch-hint">click to mute track</span>
+            <button type="button" class="ch-toggle ch-hm" data-ch="0"
+                    aria-pressed="false"
+                    title="Click to mute the HM track (speech with background)">
+              <i class="sw h"></i> HM <span class="ch-note">w. bg</span>
+            </button>
+            <button type="button" class="ch-toggle ch-ai" data-ch="1"
+                    aria-pressed="false"
+                    title="Click to mute the AI track (speech without background)">
+              <i class="sw a"></i> AI <span class="ch-note">w/o bg</span>
+            </button>
+          </span>
+        </div>
+        <p class="sound-strip is-empty"><i class="fas fa-volume-off"></i> No sound events in this excerpt</p>
+        <details class="context-box">
+          <summary>Persona &amp; Scenario</summary>
+          <div class="context-body">
+            <dl class="ctx-grid"><div class="ctx-row"><dt>Topic</dt><dd>林静与妈妈智能音箱的混乱初体验</dd></div><div class="ctx-row"><dt>Goal</dt><dd>林静与妈妈智能音箱的混乱初体验</dd></div><div class="ctx-row"><dt>Location</dt><dd>电话两端，林静在北京公寓，王秀英在合肥老家客厅</dd></div><div class="ctx-row"><dt>Interaction</dt><dd>林静与妈妈智能音箱的混乱初体验</dd></div><div class="ctx-row"><dt>Medium</dt><dd>face_to_face</dd></div><div class="ctx-row"><dt>Spatial mode</dt><dd>shared</dd></div><div class="ctx-row"><dt>Ambience</dt><dd>王秀英的合肥老家客厅 (home_living)</dd></div></dl>
+            <div class="persona-grid">
+              <div class="persona spk-ai">
+              <div class="persona-head">
+                <span class="persona-role">AI</span>
+                <span class="persona-name">林静</span>
+                <span class="persona-meta">产品经理 · age 31 · 女</span>
+              </div>
+              <div class="persona-tag">温柔人妻 / 治愈姐姐</div>
+              <div class="persona-traits">耐心、有点小固执、孝顺、温柔有引导性、教学时习惯用工作逻辑和比喻</div>
+              <blockquote class="persona-intro">31岁，在北京做产品经理，习惯用智能家居，为妈妈买智能音箱，想远程教她使用。</blockquote>
+            </div><div class="persona spk-hm">
+              <div class="persona-head">
+                <span class="persona-role">HM</span>
+                <span class="persona-name">王秀英</span>
+                <span class="persona-meta">退休小学老师 · age 58 · 女</span>
+              </div>
+              <div class="persona-tag">热心大妈 / 烟火阿姨</div>
+              <div class="persona-traits">可爱、爱唠叨、有点小孩脾气、对新科技有敬畏感、容易气馁、成功时欣喜</div>
+              <blockquote class="persona-intro">58岁，退休小学老师，独居合肥，喜欢听黄梅戏，对智能设备不太熟悉，但愿意尝试。</blockquote>
+            </div>
+            </div>
+          </div>
+        </details>
+        <details class="transcript-box">
+          <summary>Transcript (8 turns)</summary>
+          <ol class="transcript">
+            <li class="turn spk-ai" data-start="0.300" data-end="6.835"><span class="turn-ts">0:00</span><span class="turn-spk">AI</span><span class="turn-text">妈你说太快啦，音箱反应跟不上的，哪能一下消化那么多信息呀。</span></li>
+            <li class="turn spk-hm" data-start="7.135" data-end="17.899"><span class="turn-ts">0:07</span><span class="turn-spk">HM</span><span class="turn-text">咋还没声呢？小雅小雅，放个黄梅戏《女驸马》！哎哟这什么破玩意儿，喊两遍都没反应，嫌我合肥口音咋的？</span></li>
+            <li class="turn spk-ai" data-start="18.199" data-end="25.926"><span class="turn-ts">0:18</span><span class="turn-spk">AI</span><span class="turn-text">哪能啊！现在智能设备可灵了，你得把它当小助理，喊完名字等它应你再说话。</span></li>
+            <li class="turn spk-hm" data-start="26.226" data-end="31.856"><span class="turn-ts">0:26</span><span class="turn-spk">HM</span><span class="turn-text">还要等它答应？这玩意儿架子比你跳广场舞的李阿姨还大呢！</span></li>
+            <li class="turn spk-ai" data-start="32.156" data-end="39.700"><span class="turn-ts">0:32</span><span class="turn-spk">AI</span><span class="turn-text">对呀，你慢慢来，就先喊它名字，别急着一股脑把戏名说出来，给它点反应的空儿。</span></li>
+            <li class="turn spk-hm" data-start="40.000" data-end="51.379"><span class="turn-ts">0:40</span><span class="turn-spk">HM</span><span class="turn-text">小雅小雅，放个《女驸马》！哎呀还是不响！我床头那破收音机按一下就出声，哪像这玩意儿这么磨叽啊！</span></li>
+            <li class="turn spk-ai" data-start="51.679" data-end="60.458"><span class="turn-ts">0:51</span><span class="turn-spk">AI</span><span class="turn-text">妈你别急呀，用这智能音箱就像带职场新人似的，你刚才还是把名字和指令连一块说了。</span></li>
+            <li class="turn spk-hm is-event ev-backchannel" data-start="53.649" data-end="56.313"><span class="turn-ts">0:53</span><span class="turn-spk">HM</span><span class="turn-text">好好好，用用用。<span class="turn-flag">Backchannel</span></span></li>
+          </ol>
+        </details>
+        <noscript><audio controls preload="none" src="assets/audio/_showcase/hl07_backchannel_hm.m4a"></audio></noscript>
+      </div>
+    </div>
+      <div class="column is-half">
+      <div class="duplex showcase-card"
+           data-hm-opus="assets/audio/_showcase/hl08_backchannel_hm.opus" data-hm-m4a="assets/audio/_showcase/hl08_backchannel_hm.m4a"
+           data-ai-opus="assets/audio/_showcase/hl08_backchannel_ai.opus" data-ai-m4a="assets/audio/_showcase/hl08_backchannel_ai.m4a"
+           data-label="肥猫与王总热搜业务 · 附和 · event t=153.7s · clip [95.2, 161.0]s">
+        <div class="card-header">
+          <span class="label-badge backchannel-badge"
+                title="annotation label: 附和 / backchannel">Backchannel</span>
+          <span class="dlg-id">#0941</span>
+        </div>
+        <p class="scenario-title">肥猫与王总热搜业务</p>
+        <p class="excerpt-note">
+          <i class="fas fa-info-circle"></i>
+          <strong>1:05</strong> excerpt (not the full dialogue) —
+          8 turns, turns <strong>t13–t20</strong> of the full dialogue; the event is turn <strong>8/8</strong> here (t20, HM, at 0:58)
+        </p>
+        <div class="wave-stack">
+          <div class="wave wave-hm" aria-label="HM channel waveform"></div>
+          <div class="wave wave-ai" aria-label="AI channel waveform"></div>
+          <div class="shared-cursor" aria-hidden="true"></div>
+        </div>
+        <div class="ctl">
+          <button type="button" class="button is-small is-primary play" aria-pressed="false" aria-label="Play excerpt 8">▶ Play</button>
+          <span class="t">0:00</span>
+          <span class="key">
+            <span class="ch-hint">click to mute track</span>
+            <button type="button" class="ch-toggle ch-hm" data-ch="0"
+                    aria-pressed="false"
+                    title="Click to mute the HM track (speech with background)">
+              <i class="sw h"></i> HM <span class="ch-note">w. bg</span>
+            </button>
+            <button type="button" class="ch-toggle ch-ai" data-ch="1"
+                    aria-pressed="false"
+                    title="Click to mute the AI track (speech without background)">
+              <i class="sw a"></i> AI <span class="ch-note">w/o bg</span>
+            </button>
+          </span>
+        </div>
+        <p class="sound-strip is-empty"><i class="fas fa-volume-off"></i> No sound events in this excerpt</p>
+        <details class="context-box">
+          <summary>Persona &amp; Scenario</summary>
+          <div class="context-body">
+            <dl class="ctx-grid"><div class="ctx-row"><dt>Topic</dt><dd>肥猫与王总热搜业务</dd></div><div class="ctx-row"><dt>Goal</dt><dd>肥猫与王总热搜业务</dd></div><div class="ctx-row"><dt>Location</dt><dd>肥猫：城中村极速网吧VIP包间；王总：福瑞达食品公司董事长办公室</dd></div><div class="ctx-row"><dt>Interaction</dt><dd>肥猫与王总热搜业务</dd></div><div class="ctx-row"><dt>Medium</dt><dd>phone</dd></div><div class="ctx-row"><dt>Spatial mode</dt><dd>split</dd></div><div class="ctx-row"><dt>Ambience</dt><dd>城中村极速网吧VIP包间 (quiet_indoor) · 福瑞达食品公司董事长办公室 (office)</dd></div></dl>
+            <div class="persona-grid">
+              <div class="persona spk-ai">
+              <div class="persona-head">
+                <span class="persona-role">AI</span>
+                <span class="persona-name">肥猫</span>
+                <span class="persona-meta">网络水军工作室老板 · age 29 · 男</span>
+              </div>
+              <div class="persona-tag">慵懒社畜 / 废柴青年</div>
+              <div class="persona-traits">圆滑、市侩、对钱敏感、谨慎、偶尔吹嘘</div>
+              <blockquote class="persona-intro">我是肥猫，29岁，干水军这行好几年了，手底下上千个账号，没有我摆不平的热搜。</blockquote>
+            </div><div class="persona spk-hm">
+              <div class="persona-head">
+                <span class="persona-role">HM</span>
+                <span class="persona-name">王总</span>
+                <span class="persona-meta">福瑞达食品公司老板 · age 45 · 男</span>
+              </div>
+              <div class="persona-tag">豪爽大叔 / 邻里大爷</div>
+              <div class="persona-traits">精明、务实、不懂网络舆论、半信半疑、焦急</div>
+              <blockquote class="persona-intro">我是王总，开食品公司的，最近被黑得厉害，就想赶紧把热搜压下去。</blockquote>
+            </div>
+            </div>
+          </div>
+        </details>
+        <details class="transcript-box">
+          <summary>Transcript (8 turns)</summary>
+          <ol class="transcript">
+            <li class="turn spk-ai" data-start="0.300" data-end="10.220"><span class="turn-ts">0:00</span><span class="turn-spk">AI</span><span class="turn-text">痛快！撤热搜再加我手底下几百个营销号联动，轮番把您家的公共广场洗干净，基础防守价一口价三万，绝对不跟您玩虚的。</span></li>
+            <li class="turn spk-hm" data-start="9.820" data-end="17.208"><span class="turn-ts">0:09</span><span class="turn-spk">HM</span><span class="turn-text">三万？你这是趁火打劫啊！咱们半年前合作那两次，加起来都没这次要的多！</span></li>
+            <li class="turn spk-ai" data-start="17.508" data-end="25.761"><span class="turn-ts">0:17</span><span class="turn-spk">AI</span><span class="turn-text">那哪能一样啊王总，您算啊，几百个号的发帖成本，还有删帖打点渠道的费用，三万真的是给您的良心价了。</span></li>
+            <li class="turn spk-hm" data-start="26.061" data-end="33.940"><span class="turn-ts">0:26</span><span class="turn-spk">HM</span><span class="turn-text">良心价也不能翻这么多倍啊！我现在销量跌得妈都不认，哪有闲钱砸水军，太贵了！</span></li>
+            <li class="turn spk-ai" data-start="34.240" data-end="44.142"><span class="turn-ts">0:34</span><span class="turn-spk">AI</span><span class="turn-text">您听我给您算笔账啊，这负面要是继续发酵，您损失的可是几百万的流水，花三万保住基本盘，这笔账您肯定比我算得明白。</span></li>
+            <li class="turn spk-hm" data-start="44.442" data-end="54.016"><span class="turn-ts">0:44</span><span class="turn-spk">HM</span><span class="turn-text">算账我还不会？我就问你，三万砸下去，明天再冒个新大V带节奏，我难道还要再掏三万？你们这钱也太好赚了吧！</span></li>
+            <li class="turn spk-ai" data-start="54.316" data-end="65.276"><span class="turn-ts">0:54</span><span class="turn-spk">AI</span><span class="turn-text">您这话真是说到点子上了！光防守就是治标不治本，您想不想直接釜底抽薪，一劳永逸把麻烦全解决了？</span></li>
+            <li class="turn spk-hm is-event ev-backchannel" data-start="58.556" data-end="60.867"><span class="turn-ts">0:58</span><span class="turn-spk">HM</span><span class="turn-text">对嘛，治标不治本。<span class="turn-flag">Backchannel</span></span></li>
+          </ol>
+        </details>
+        <noscript><audio controls preload="none" src="assets/audio/_showcase/hl08_backchannel_hm.m4a"></audio></noscript>
+      </div>
+    </div>
+      <div class="column is-half">
+      <div class="duplex showcase-card"
+           data-hm-opus="assets/audio/_showcase/hl09_backchannel_hm.opus" data-hm-m4a="assets/audio/_showcase/hl09_backchannel_hm.m4a"
+           data-ai-opus="assets/audio/_showcase/hl09_backchannel_ai.opus" data-ai-m4a="assets/audio/_showcase/hl09_backchannel_ai.m4a"
+           data-label="老神父与忏悔青年无法原谅的自己 · 附和 · event t=130.6s · clip [68.5, 133.9]s">
+        <div class="card-header">
+          <span class="label-badge backchannel-badge"
+                title="annotation label: 附和 / backchannel">Backchannel</span>
+          <span class="dlg-id">#1034</span>
+        </div>
+        <p class="scenario-title">老神父与忏悔青年无法原谅的自己</p>
+        <p class="excerpt-note">
+          <i class="fas fa-info-circle"></i>
+          <strong>1:05</strong> excerpt (not the full dialogue) —
+          8 turns, turns <strong>t8–t15</strong> of the full dialogue; the event is turn <strong>8/8</strong> here (t15, HM, at 1:02)
+        </p>
+        <div class="wave-stack">
+          <div class="wave wave-hm" aria-label="HM channel waveform"></div>
+          <div class="wave wave-ai" aria-label="AI channel waveform"></div>
+          <div class="shared-cursor" aria-hidden="true"></div>
+        </div>
+        <div class="ctl">
+          <button type="button" class="button is-small is-primary play" aria-pressed="false" aria-label="Play excerpt 9">▶ Play</button>
+          <span class="t">0:00</span>
+          <span class="key">
+            <span class="ch-hint">click to mute track</span>
+            <button type="button" class="ch-toggle ch-hm" data-ch="0"
+                    aria-pressed="false"
+                    title="Click to mute the HM track (speech with background)">
+              <i class="sw h"></i> HM <span class="ch-note">w. bg</span>
+            </button>
+            <button type="button" class="ch-toggle ch-ai" data-ch="1"
+                    aria-pressed="false"
+                    title="Click to mute the AI track (speech without background)">
+              <i class="sw a"></i> AI <span class="ch-note">w/o bg</span>
+            </button>
+          </span>
+        </div>
+        <p class="sound-strip is-empty"><i class="fas fa-volume-off"></i> No sound events in this excerpt</p>
+        <details class="context-box">
+          <summary>Persona &amp; Scenario</summary>
+          <div class="context-body">
+            <dl class="ctx-grid"><div class="ctx-row"><dt>Topic</dt><dd>老神父与忏悔青年无法原谅的自己</dd></div><div class="ctx-row"><dt>Goal</dt><dd>老神父与忏悔青年无法原谅的自己</dd></div><div class="ctx-row"><dt>Location</dt><dd>圣心大教堂告解室</dd></div><div class="ctx-row"><dt>Interaction</dt><dd>老神父与忏悔青年无法原谅的自己</dd></div><div class="ctx-row"><dt>Medium</dt><dd>face_to_face</dd></div><div class="ctx-row"><dt>Spatial mode</dt><dd>shared</dd></div><div class="ctx-row"><dt>Ambience</dt><dd>圣心大教堂告解室 (quiet_indoor)</dd></div></dl>
+            <div class="persona-grid">
+              <div class="persona spk-ai">
+              <div class="persona-head">
+                <span class="persona-role">AI</span>
+                <span class="persona-name">安德烈神父</span>
+                <span class="persona-meta">教堂神父 · age 65 · 男</span>
+              </div>
+              <div class="persona-tag">严肃男老师 / 老教授</div>
+              <div class="persona-traits">慈祥、耐心、声音低沉沙哑、语速缓慢、温和、有智慧、不教条</div>
+              <blockquote class="persona-intro">我是圣心大教堂的神父，担任神父四十年，听过无数告解。我坚信告解是疗愈的开始，愿以天主的慈悲引导每一个真心悔过的灵魂。</blockquote>
+            </div><div class="persona spk-hm">
+              <div class="persona-head">
+                <span class="persona-role">HM</span>
+                <span class="persona-name">陈宇</span>
+                <span class="persona-meta">普通上班族 · age 32 · 男</span>
+              </div>
+              <div class="persona-tag">慵懒社畜 / 废柴青年</div>
+              <div class="persona-traits">内向、敏感、自责倾向、声音低沉带着压抑的哭腔、有时颤抖</div>
+              <blockquote class="persona-intro">我是陈宇，一个普通上班族。十年前因为嫉妒，我散布谣言毁了我最好的朋友林浩的人生。我活在愧疚里，每天做噩梦，今天终于鼓起勇气来告解，希望能得到宽恕。</blockquote>
+            </div>
+            </div>
+          </div>
+        </details>
+        <details class="transcript-box">
+          <summary>Transcript (8 turns)</summary>
+          <ol class="transcript">
+            <li class="turn spk-ai" data-start="0.300" data-end="6.401"><span class="turn-ts">0:00</span><span class="turn-spk">AI</span><span class="turn-text">比赛的时候出啥岔子了？你怎么会想到去伤害他啊？</span></li>
+            <li class="turn spk-hm" data-start="6.901" data-end="15.980"><span class="turn-ts">0:06</span><span class="turn-spk">HM</span><span class="turn-text">他的作品太出彩了，满是灵气，我熬了三个通宵赶<span class="pause-mark" title="in-sentence pause">&#9209; 0.3s</span>的稿，在他跟前根本拿不出手。</span></li>
+            <li class="turn spk-ai" data-start="16.480" data-end="26.458"><span class="turn-ts">0:16</span><span class="turn-spk">AI</span><span class="turn-text">所以你当时被嫉妒冲昏了头，脑子一热就做了傻事，对不对？那你后来做了什么？</span></li>
+            <li class="turn spk-hm" data-start="26.758" data-end="37.432"><span class="turn-ts">0:26</span><span class="turn-spk">HM</span><span class="turn-text">对！我那时候嫉妒得要疯！我偷摸拍了他的图，匿名在论坛造谣他抄袭，编得跟真的一样。</span></li>
+            <li class="turn spk-ai" data-start="37.732" data-end="45.399"><span class="turn-ts">0:37</span><span class="turn-spk">AI</span><span class="turn-text">恶言比刀子还伤人啊，这谣言传出去之后，他最后落了个啥结果？</span></li>
+            <li class="turn spk-hm" data-start="45.899" data-end="56.320"><span class="turn-ts">0:45</span><span class="turn-spk">HM</span><span class="turn-text">他怎么解释都没人信，学校为了压事直接信了谣言，撤了他的保研资格，还把他从建筑社开了，成了全校的笑料。</span></li>
+            <li class="turn spk-ai" data-start="56.820" data-end="64.430"><span class="turn-ts">0:56</span><span class="turn-spk">AI</span><span class="turn-text">多有才华的年轻人啊，就这么背着黑锅，灰溜溜地走了。</span></li>
+            <li class="turn spk-hm is-event ev-backchannel" data-start="62.060" data-end="64.264"><span class="turn-ts">1:02</span><span class="turn-spk">HM</span><span class="turn-text">……背着黑锅走了。<span class="turn-flag">Backchannel</span></span></li>
+          </ol>
+        </details>
+        <noscript><audio controls preload="none" src="assets/audio/_showcase/hl09_backchannel_hm.m4a"></audio></noscript>
+      </div>
+    </div>
+      <div class="column is-half">
+      <div class="duplex showcase-card"
+           data-hm-opus="assets/audio/_showcase/hl10_backchannel_hm.opus" data-hm-m4a="assets/audio/_showcase/hl10_backchannel_hm.m4a"
+           data-ai-opus="assets/audio/_showcase/hl10_backchannel_ai.opus" data-ai-m4a="assets/audio/_showcase/hl10_backchannel_ai.m4a"
+           data-label="销售小刘与陈先生车展谈单 · 附和 · event t=88.9s · clip [28.7, 95.4]s">
+        <div class="card-header">
+          <span class="label-badge backchannel-badge"
+                title="annotation label: 附和 / backchannel">Backchannel</span>
+          <span class="dlg-id">#1187</span>
+        </div>
+        <p class="scenario-title">销售小刘与陈先生车展谈单</p>
+        <p class="excerpt-note">
+          <i class="fas fa-info-circle"></i>
+          <strong>1:06</strong> excerpt (not the full dialogue) —
+          8 turns, turns <strong>t4–t11</strong> of the full dialogue; the event is turn <strong>8/8</strong> here (t11, HM, at 1:00)
+        </p>
+        <div class="wave-stack">
+          <div class="wave wave-hm" aria-label="HM channel waveform"></div>
+          <div class="wave wave-ai" aria-label="AI channel waveform"></div>
+          <div class="shared-cursor" aria-hidden="true"></div>
+        </div>
+        <div class="ctl">
+          <button type="button" class="button is-small is-primary play" aria-pressed="false" aria-label="Play excerpt 10">▶ Play</button>
+          <span class="t">0:00</span>
+          <span class="key">
+            <span class="ch-hint">click to mute track</span>
+            <button type="button" class="ch-toggle ch-hm" data-ch="0"
+                    aria-pressed="false"
+                    title="Click to mute the HM track (speech with background)">
+              <i class="sw h"></i> HM <span class="ch-note">w. bg</span>
+            </button>
+            <button type="button" class="ch-toggle ch-ai" data-ch="1"
+                    aria-pressed="false"
+                    title="Click to mute the AI track (speech without background)">
+              <i class="sw a"></i> AI <span class="ch-note">w/o bg</span>
+            </button>
+          </span>
+        </div>
+        <p class="sound-strip"><i class="fas fa-volume-high"></i> <span class="sound-label">Sound events · 1</span><button type="button" class="sound-chip" data-start="57.155" title="door_open · AI+HM channel · 0.50s"><i class="fas fa-door-open"></i><span class="sound-name">door open</span><span class="sound-ts">0:57</span><span class=chip-int>med</span></button></p>
+        <details class="context-box">
+          <summary>Persona &amp; Scenario</summary>
+          <div class="context-body">
+            <dl class="ctx-grid"><div class="ctx-row"><dt>Topic</dt><dd>销售小刘与陈先生车展谈单</dd></div><div class="ctx-row"><dt>Goal</dt><dd>销售小刘与陈先生车展谈单</dd></div><div class="ctx-row"><dt>Interaction</dt><dd>销售小刘与陈先生车展谈单</dd></div><div class="ctx-row"><dt>Medium</dt><dd>face_to_face</dd></div><div class="ctx-row"><dt>Spatial mode</dt><dd>shared</dd></div><div class="ctx-row"><dt>Ambience</dt><dd>车展展厅 (public_lobby)</dd></div></dl>
+            <div class="persona-grid">
+              <div class="persona spk-hm">
+              <div class="persona-head">
+                <span class="persona-role">HM</span>
+                <span class="persona-name">陈先生</span>
+                <span class="persona-meta">公司中层 · age 38 · 男</span>
+              </div>
+              <div class="persona-tag">豪爽大叔 / 邻里大爷</div>
+              <div class="persona-traits">稳重、务实、做决定慢、怕被忽悠、会反复比较</div>
+              <blockquote class="persona-intro">我叫陈先生，38岁，公司中层，家里有两个儿子，开一辆老A级轿车，想换辆大SUV，但得老婆同意。</blockquote>
+            </div><div class="persona spk-ai">
+              <div class="persona-head">
+                <span class="persona-role">AI</span>
+                <span class="persona-name">小刘</span>
+                <span class="persona-meta">汽车销售 · age 26 · 男</span>
+              </div>
+              <div class="persona-tag">阳光青年 / 活力学长</div>
+              <div class="persona-traits">热情阳光、能说会道、有时心急、懂配置、会对比竞品</div>
+              <blockquote class="persona-intro">我是小刘，26岁，领航汽车4S店销售，工牌042，喜欢车，懂配置，绝对不打断对方，顺着对方的话往下接。</blockquote>
+            </div>
+            </div>
+          </div>
+        </details>
+        <details class="transcript-box">
+          <summary>Transcript (8 turns)</summary>
+          <ol class="transcript">
+            <li class="turn spk-ai" data-start="0.300" data-end="9.937"><span class="turn-ts">0:00</span><span class="turn-spk">AI</span><span class="turn-text">咱们这台凌云X7主打的就是大空间，看您看车的关注点，是不是家里有娃，出门要带一堆东西啊？</span></li>
+            <li class="turn spk-hm" data-start="10.237" data-end="18.919"><span class="turn-ts">0:10</span><span class="turn-spk">HM</span><span class="turn-text">哪止是带东西啊，家里俩皮得没边的臭小子，现在开的老A级轿车，全家出门挤得跟塞沙丁鱼似的。</span></li>
+            <li class="turn spk-ai" data-start="19.419" data-end="28.428"><span class="turn-ts">0:19</span><span class="turn-spk">AI</span><span class="turn-text">A级车确实塞不下啊，尤其俩男孩窜个子快，后排挤得慌肯定要闹，您开车也分心对吧？</span></li>
+            <li class="turn spk-hm" data-start="28.728" data-end="35.388"><span class="turn-ts">0:28</span><span class="turn-spk">HM</span><span class="turn-text">可不是嘛，每次出门俩兔崽子为了抢靠窗的位置都能闹翻天。</span></li>
+            <li class="turn spk-ai" data-start="35.688" data-end="46.121"><span class="turn-ts">0:35</span><span class="turn-spk">AI</span><span class="turn-text">那您今天可真是找对车了，换个大SUV，以后周末带全家自驾游，娃坐得舒服，您也省心不少啊。</span></li>
+            <li class="turn spk-hm" data-start="46.421" data-end="57.155"><span class="turn-ts">0:46</span><span class="turn-spk">HM</span><span class="turn-text">换大车我确实想好久了，刚才转了好几家，好多七座的第三排纯纯是摆设，大人坐进去腿都伸不开，憋得难受。</span></li>
+            <li class="turn spk-ai" data-start="57.655" data-end="65.612"><span class="turn-ts">0:57</span><span class="turn-spk">AI</span><span class="turn-text">您别光站外边瞅啊，来我给您拉开车门，您亲自坐第三排感受感受就知道了。</span></li>
+            <li class="turn spk-hm is-event ev-backchannel" data-start="60.215" data-end="62.992"><span class="turn-ts">1:00</span><span class="turn-spk">HM</span><span class="turn-text">对，我这人就爱瞎琢磨。<span class="turn-flag">Backchannel</span></span></li>
+          </ol>
+        </details>
+        <noscript><audio controls preload="none" src="assets/audio/_showcase/hl10_backchannel_hm.m4a"></audio></noscript>
+      </div>
+    </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     §9 LICENSE & ETHICS  and  §10 CITATION (BibTeX)
+     REMOVED for the current pre-review version.
+
+     Both sections were cut on request while the paper is under review.
+     Nothing is lost: LICENSE and ETHICS.md still ship in the repo root
+     and remain the authoritative texts.
+
+     Before making this page public, restore §9 (or link LICENSE /
+     ETHICS.md from the footer): it carried the third-party attribution
+     that the upstream licences require --
+       - AudioSeal (Meta AI, Apache 2.0)
+       - IndexTTS2 weights under the Bilibili Model License
+         (non-commercial research; commercial use needs written consent)
+       - CC BY 4.0 for the audio, Apache 2.0 for the code
+     Restore §10 once the arXiv ID and IEEE DOI exist.
+============================================================ -->
+<!-- ============================================================
+     §11 FOOTER
+============================================================ -->
+<!-- ============================================================
+     FOOTER NOTES REMOVED for the current pre-review version.
+
+     ⚠️ RESTORE BEFORE PUBLISHING. What was here was not decoration —
+     it was the attribution the upstream licences require, and it is now
+     the only place on the page that carried it (§9 License & Ethics was
+     removed earlier):
+
+       - AudioSeal (Meta AI) — Apache 2.0 requires attribution/NOTICE
+       - IndexTTS2 (Bilibili IndexTeam) — non-commercial research licence;
+         commercial use needs written consent from indexspeech@bilibili.com
+       - Audio CC BY 4.0 · code Apache 2.0
+       - Nerfies / Sommelier template — CC BY-SA 4.0 requires attribution
+
+     LICENSE and ETHICS.md in the repo root still hold the authoritative
+     texts, so nothing is lost; the page just no longer surfaces them.
+     Either restore this block or link LICENSE / ETHICS.md from the footer
+     before the page goes public.
+============================================================ -->
+<footer class="footer footer-section">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p><strong>DuplexDrama</strong></p>
+    </div>
+  </div>
+</footer>
+
+<!-- wavesurfer.js v7.12.11 (pinned for archival) -->
+<script type="module" src="assets/js/main.js"></script>
+
+</body>
+</html>

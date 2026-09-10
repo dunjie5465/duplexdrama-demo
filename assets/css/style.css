@@ -1,0 +1,1437 @@
+/* ============================================================
+   DuplexDrama demo page — custom theme
+   Palette: purple #5E60CE + cyan #48BFE3
+   Differentiated from Moshi green / Sommelier green / NVIDIA green
+   ============================================================ */
+
+:root {
+  --dd-primary:        #5E60CE;
+  --dd-primary-dark:   #4E50B0;
+  --dd-primary-light:  #E8E8FF;
+  --dd-secondary:      #48BFE3;
+  --dd-secondary-dark: #3AA8C;
+  --dd-bg:      #FAFAFA;
+  --dd-bg-card: #FFFFFF;
+  --dd-text:    #1A1A2E;
+  --dd-muted:   #6B7280;
+  --dd-rule:    #E5E7EB;
+  --dd-shadow:  0 1px 3px rgba(26,26,46,.08), 0 1px 2px rgba(26,26,46,.06);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Google Sans', 'Noto Sans', system-ui, -apple-system, sans-serif;
+  color: var(--dd-text);
+  background: var(--dd-bg);
+  line-height: 1.6;
+}
+
+code, pre, .bibtex-block code {
+  font-family: 'Roboto Mono', 'JetBrains Mono', Consolas, monospace;
+  font-size: 0.88em;
+}
+
+/* Override Bulma primary color */
+.has-text-primary,
+.title.is-1,
+.title.is-2,
+.title.is-3,
+.title.is-4,
+.title.is-5 {
+  color: var(--dd-primary);
+}
+
+/* Filled primary button: white label on purple fill.
+   NOTE: do NOT fold .button.is-primary into the purple `color` group above —
+   that paints purple text on a purple fill, leaving the label invisible until
+   Bulma's higher-specificity :hover rule kicks in. */
+.button.is-primary {
+  background-color: var(--dd-primary);
+  border-color: var(--dd-primary);
+  color: #fff;
+}
+
+.button.is-primary:focus,
+.button.is-primary:focus-visible,
+.button.is-primary:active {
+  color: #fff;
+}
+
+.button.is-primary:hover {
+  background-color: var(--dd-primary-dark);
+  border-color: var(--dd-primary-dark);
+}
+
+a {
+  color: var(--dd-primary);
+}
+
+a:hover {
+  color: var(--dd-primary-dark);
+}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.navbar {
+  border-bottom: 3px solid var(--dd-primary);
+  box-shadow: 0 2px 8px rgba(94,96,206,0.08);
+}
+
+.navbar-item {
+  font-weight: 500;
+}
+
+.brand-emoji {
+  font-size: 1.4em;
+  margin-right: 0.4rem;
+}
+
+.brand-text {
+  font-weight: 700;
+  font-size: 1.2em;
+  color: var(--dd-primary);
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero-section {
+  background: linear-gradient(135deg, #FFFFFF 0%, var(--dd-primary-light) 100%);
+  padding: 4rem 1.5rem 3rem;
+  border-bottom: 1px solid var(--dd-rule);
+}
+
+/* Small brand line above the paper title. The headline itself is now the full
+   paper title, so the 🎭 DuplexDrama branding moves here rather than sitting
+   inside a formal title string. */
+.hero-eyebrow {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--dd-primary);
+  margin-bottom: 0.9rem;
+}
+
+.hero-eyebrow span {
+  font-size: 1.15em;
+  margin-right: 0.2rem;
+}
+
+/* Full paper title: ~130 characters, so it cannot use Bulma's .is-1 display
+   size. Clamp scales it down on narrow viewports, max-width keeps the measure
+   readable, and text-wrap:balance avoids a lonely trailing word. */
+.hero-title {
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  font-size: clamp(1.35rem, 1.05rem + 1.5vw, 2.35rem);
+  line-height: 1.25;
+  max-width: 22em;
+  margin: 0 auto 0.85rem !important;
+  text-wrap: balance;
+  color: var(--dd-text);
+}
+
+.hero-subtitle {
+  font-weight: 400;
+  color: var(--dd-muted);
+  font-size: clamp(1rem, 0.9rem + 0.5vw, 1.3rem);
+  max-width: 34em;
+  margin: 0 auto 1.5rem !important;
+  text-wrap: balance;
+}
+
+.venue-tag {
+  margin-bottom: 2rem;
+}
+
+.venue-pill {
+  display: inline-block;
+  background: var(--dd-bg-card);
+  border: 1px solid var(--dd-rule);
+  border-radius: 999px;
+  padding: 0.3rem 1rem;
+  margin: 0 0.3rem;
+  font-weight: 500;
+  color: var(--dd-text);
+}
+
+.hero-buttons .button {
+  margin: 0.4rem 0.3rem;
+}
+
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+.section-heading {
+  color: var(--dd-primary);
+  font-weight: 700;
+  margin-bottom: 2rem !important;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.section-heading::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--dd-primary);
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+.section-heading.has-text-centered::after {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.subtitle-meta {
+  color: var(--dd-muted);
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+/* ============================================================
+   §4 STAT STRIP
+   ============================================================ */
+.stat-strip-section {
+  background: var(--dd-bg-card);
+  padding: 3rem 1.5rem;
+}
+
+.stat-strip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.stat-tile {
+  display: inline-block;
+  width: 180px;
+  height: 120px;
+  background: #FFFFFF;
+  border-top: 3px solid var(--dd-primary);
+  padding: 1rem;
+  text-align: center;
+  box-shadow: var(--dd-shadow);
+  border-radius: 0 0 4px 4px;
+  transition: transform 0.2s;
+}
+
+.stat-tile:hover {
+  transform: translateY(-2px);
+}
+
+.stat-tile .num {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--dd-primary);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.stat-tile .lbl {
+  font-size: 0.8rem;
+  color: var(--dd-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+/* ============================================================
+   §5 PIPELINE
+   ============================================================ */
+.pipeline-figure {
+  margin: 2rem auto;
+  max-width: 90%;
+  text-align: center;
+}
+
+/* The figure is a very wide banner (~8.7:1). It must sit centred and stay
+   inside its container.
+   NOTE: this used to be `width: 110%; max-width: none`, a hack to enlarge the
+   old raster pipeline.png — it made the image start at the left edge and spill
+   10% past the right, so the diagram read as off-centre. With a vector source
+   there is nothing to gain by overflowing. */
+.pipeline-figure img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  /* dvisvgm emits no background rect, so give the transparent SVG a white
+     plate — otherwise the rounded corners and shadow frame nothing. */
+  background: #fff;
+  padding: 0.6rem 0.4rem;
+  box-sizing: border-box;
+  border-radius: 6px;
+  box-shadow: var(--dd-shadow);
+}
+
+.pipeline-figure figcaption {
+  color: var(--dd-muted);
+  margin: 1rem auto 0;
+  max-width: 46em;
+  font-style: italic;
+  text-align: center;
+}
+
+.pipeline-placeholder {
+  padding: 3rem;
+  background: var(--dd-bg);
+  border: 2px dashed var(--dd-rule);
+  border-radius: 6px;
+  text-align: center;
+}
+
+.stage-card {
+  background: var(--dd-bg-card);
+  padding: 1.5rem;
+  border-radius: 6px;
+  box-shadow: var(--dd-shadow);
+  margin-bottom: 1rem;
+  position: relative;
+  border-left: 4px solid var(--dd-secondary);
+}
+
+/* Mirrors the `\node[emph=...]` highlight on stage 4 of the pipeline
+   figure — the "Construct background channel" step is the script-aware
+   event injection the dataset is built around, so we pull the accent
+   to the demo page's primary brand colour and bump the left border
+   to make it scannable. */
+.stage-card.is-emph {
+  border-left-color: var(--dd-primary);
+  border-left-width: 6px;
+}
+
+.stage-num {
+  position: absolute;
+  top: -12px;
+  left: 1.5rem;
+  background: var(--dd-primary);
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.stage-title {
+  color: var(--dd-primary);
+  font-weight: 600;
+  margin: 0.5rem 0 !important;
+}
+
+/* ============================================================
+   §6 CONTRIBUTIONS
+   ============================================================ */
+.contrib-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.contrib-list li {
+  padding: 1rem 1.2rem;
+  margin-bottom: 0.8rem;
+  background: var(--dd-bg-card);
+  border-left: 4px solid var(--dd-primary);
+  box-shadow: var(--dd-shadow);
+  border-radius: 0 4px 4px 0;
+}
+
+/* ============================================================
+   §7 AUDIO SHOWCASE
+   ============================================================ */
+.audio-section {
+  background: var(--dd-bg-card);
+}
+
+.tier-heading {
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.tier-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  color: white;
+}
+
+.tier1-badge {
+  background: var(--dd-primary);
+}
+
+.tier2-badge {
+  background: var(--dd-secondary);
+}
+
+.tier3-badge {
+  background: #1A1A2E;
+}
+
+.tier1-grid,
+.tier3-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* ---- Tier 1 + Tier 3: dual-channel wavesurfer block ---- */
+.duplex {
+  margin: 0;
+  padding: 1rem;
+  background: var(--dd-bg);
+  border: 1px solid var(--dd-rule);
+  border-radius: 6px;
+  transition: box-shadow 0.2s;
+}
+
+.duplex:hover {
+  box-shadow: var(--dd-shadow);
+}
+
+.duplex .cap {
+  font: 600 0.85rem/1.4 system-ui;
+  margin: 0 0 0.5rem;
+  color: var(--dd-text);
+  min-height: 1.2em;
+}
+
+.duplex .wave {
+  background: white;
+  min-height: 48px;
+  position: relative;
+}
+
+.duplex .wave-stack {
+  /* Stacks the two mono wavesurfers into one block — HM on top, AI below,
+     visually echoing the split-channel render that used to come from a
+     single wavesurfer instance reading stereo. */
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.duplex .wave-hm {
+  border-bottom: 1px solid var(--dd-rule);
+}
+
+.duplex .wave-ai { /* nothing extra */ }
+
+/* Shared playhead that spans both waveforms. Two independently-rendered
+   wavesurfer cursors look subtly misaligned even when their media clocks
+   agree (each wavesurfer runs its own RAF cycle), so we paint one DOM
+   line over the stack and let JS position it from HM's currentTime.
+   The individual wavesurfers still draw their own progress-fill via
+   progressColor — that part is keyed to playback position and looks
+   fine at our 48 px height; only the playhead itself needs to be shared. */
+.duplex .shared-cursor {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  background: #111;
+  pointer-events: none;
+  z-index: 2;
+  transform: translateX(0);
+  will-change: transform;
+}
+
+.duplex .ctl {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.4rem;
+  font: 0.85rem system-ui;
+}
+
+.duplex .play {
+  min-width: 5.5rem;
+}
+
+.duplex .t {
+  color: var(--dd-muted);
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.85rem;
+}
+
+.duplex .key {
+  margin-left: auto;
+  color: var(--dd-muted);
+  font-size: 0.8rem;
+}
+
+.sw {
+  display: inline-block;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 2px;
+  vertical-align: -1px;
+}
+
+.sw.h { background: #3b6ea5; }   /* Human channel — blue */
+.sw.a { background: #b5651d; }   /* AI channel — orange */
+
+/* ---- Tier 2: grid table (pure HTML5 audio, no JS lib) ---- */
+.grid-meta {
+  color: var(--dd-muted);
+  margin-bottom: 1.5rem;
+}
+
+.samples {
+  border-collapse: collapse;
+  font: 0.85rem/1.4 system-ui;
+  width: 100%;
+  background: white;
+  box-shadow: var(--dd-shadow);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.samples th,
+.samples td {
+  border-bottom: 1px solid var(--dd-rule);
+  padding: 0.7rem 0.8rem;
+  vertical-align: middle;
+  text-align: left;
+}
+
+.samples th {
+  background: var(--dd-primary-light);
+  color: var(--dd-primary);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+.samples tr:last-child td {
+  border-bottom: none;
+}
+
+.samples tr:hover {
+  background: #FAFAFA;
+}
+
+.samples audio {
+  width: 200px;
+  min-width: 110px;
+  max-width: 22vw;
+  display: block;
+}
+
+.samples .ours-col {
+  background: #f2f7fc;
+}
+
+.samples .tx {
+  max-width: 26rem;
+  color: var(--dd-text);
+  font-style: italic;
+}
+
+/* ============================================================
+   §8 DISTRIBUTION (inline SVG)
+   ============================================================ */
+.dist-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 6px;
+  box-shadow: var(--dd-shadow);
+  height: 100%;
+}
+
+.dist-title {
+  color: var(--dd-primary);
+  font-weight: 600;
+  margin-bottom: 1rem !important;
+}
+
+.dist-svg {
+  width: 100%;
+  height: 140px;
+}
+
+.dist-caption {
+  color: var(--dd-muted);
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+/* ============================================================
+   §9 LICENSE
+   ============================================================ */
+.license-grid {
+  margin-bottom: 2rem;
+}
+
+.license-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 6px;
+  box-shadow: var(--dd-shadow);
+  height: 100%;
+}
+
+.license-badge {
+  display: inline-block;
+  background: var(--dd-primary);
+  color: white !important;
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.license-badge:hover {
+  background: var(--dd-primary-dark);
+  color: white !important;
+}
+
+.license-badge-tts {
+  background: var(--dd-secondary);
+  cursor: help;
+}
+
+.license-badge-tts:hover {
+  background: var(--dd-secondary-dark);
+}
+
+.ethics-box {
+  background: white;
+  padding: 2rem;
+  border-radius: 6px;
+  box-shadow: var(--dd-shadow);
+  border-left: 4px solid var(--dd-primary);
+}
+
+.ethics-box ul {
+  margin-left: 0;
+  padding-left: 1.2rem;
+}
+
+.ethics-box li {
+  margin-bottom: 0.6rem;
+}
+
+/* ============================================================
+   §10 CITATION
+   ============================================================ */
+.bibtex-block {
+  position: relative;
+  background: #1A1A2E;
+  color: #E8E8FF;
+  padding: 1.5rem;
+  border-radius: 6px;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+.bibtex-block pre {
+  color: inherit;
+  margin: 0;
+  white-space: pre;
+}
+
+.bibtex-block code {
+  color: inherit;
+  background: transparent;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+}
+
+.copy-btn:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.related-cites {
+  font-size: 0.95rem;
+  color: var(--dd-muted);
+}
+
+/* ============================================================
+   §11 FOOTER
+   ============================================================ */
+.footer-section {
+  background: var(--dd-text);
+  color: #B8B8D4;
+  padding: 3rem 1.5rem 2rem;
+}
+
+.footer-section strong {
+  color: white;
+}
+
+.footer-section a {
+  color: var(--dd-secondary);
+}
+
+.footer-section a:hover {
+  color: white;
+}
+
+.template-credit {
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  .stat-tile {
+    width: 140px;
+    height: 100px;
+  }
+
+  .stat-tile .num {
+    font-size: 1.8rem;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .tier1-grid,
+  .tier3-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .samples {
+    font-size: 0.75rem;
+  }
+
+  .samples audio {
+    width: 140px;
+    min-width: 90px;
+  }
+}
+
+/* ============================================================
+   PRINT
+   ============================================================ */
+@media print {
+  .navbar,
+  .hero-buttons,
+  .copy-btn,
+  .duplex {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+  }
+}
+/* ============================================================
+   v1 SHOWCASE — 10-clip grid (Tier 1 + Tier 3 fusion)
+   ============================================================ */
+
+.showcase-grid {
+  margin-top: 1.5rem;
+}
+
+.showcase-card {
+  background: white;
+  border: 1px solid var(--dd-rule);
+  border-radius: 12px;
+  padding: 1.2rem 1.4rem 1.4rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 6px rgba(94, 96, 206, 0.06);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.showcase-card:hover {
+  box-shadow: 0 6px 18px rgba(94, 96, 206, 0.12);
+  transform: translateY(-1px);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.label-badge {
+  display: inline-block;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: white;
+}
+
+.label-badge.off-talk-badge {
+  background: linear-gradient(135deg, #F72585 0%, #B5179E 100%);
+}
+
+.label-badge.backchannel-badge {
+  background: linear-gradient(135deg, #4CC9F0 0%, #48BFE3 100%);
+}
+
+.label-badge.default-badge {
+  background: linear-gradient(135deg, #5E60CE 0%, #48BFE3 100%);
+}
+
+.dlg-id {
+  font-family: var(--dd-font-mono);
+  font-size: 0.82rem;
+  color: var(--dd-muted);
+  letter-spacing: 0.04em;
+}
+
+.scenario-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--dd-primary);
+  margin: 0.4rem 0 0.3rem 0;
+}
+
+.excerpt-note {
+  font-size: 0.83rem;
+  color: var(--dd-muted);
+  margin: 0.3rem 0 0.7rem 0;
+  line-height: 1.5;
+}
+
+.excerpt-note i {
+  color: var(--dd-accent);
+  margin-right: 0.25rem;
+}
+
+.event-text {
+  margin: 0 0 0.9rem 0;
+  padding: 0.7rem 0.9rem;
+  background: #F8F7FC;
+  border-left: 3px solid var(--dd-accent);
+  border-radius: 4px;
+  font-size: 0.95rem;
+  color: #222;
+  font-style: normal;
+  line-height: 1.5;
+}
+
+.speaker-tag {
+  display: inline-block;
+  background: var(--dd-primary);
+  color: white;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 0.12rem 0.45rem;
+  border-radius: 3px;
+  margin-right: 0.5rem;
+  vertical-align: 0.1em;
+}
+
+.excerpt-disclaimer {
+  max-width: 720px;
+  margin: 1rem auto 1.5rem;
+  padding: 0.7rem 1.1rem;
+  background: #FEF9E7;
+  border: 1px solid #F7DC6F;
+  border-radius: 8px;
+  color: #5D4E00;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.excerpt-disclaimer i {
+  color: #B7950B;
+  margin-right: 0.3rem;
+}
+
+.excerpt-disclaimer strong {
+  color: #7D6608;
+}
+
+/* Watermark notice (AudioSeal / EU AI Act Article 50 disclosure) */
+.watermark-notice {
+  max-width: 720px;
+  margin: 1rem auto 1rem;
+  padding: 0.65rem 1.1rem;
+  background: #E8F4FD;
+  border: 1px solid #7FB3D5;
+  border-radius: 8px;
+  color: #1B4F72;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.watermark-notice i {
+  color: #2874A6;
+  margin-right: 0.3rem;
+}
+
+.watermark-notice strong {
+  color: #154360;
+}
+
+.watermark-notice a {
+  color: #1A5276;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+}
+
+.watermark-notice code {
+  background: #D6EAF8;
+  color: #154360;
+  padding: 0.05rem 0.35rem;
+  border-radius: 3px;
+  font-size: 0.85em;
+  font-family: "SF Mono", "Roboto Mono", Consolas, monospace;
+}
+
+/* ============================================================
+   Showcase transcript — every turn audible in the excerpt window.
+   Added after review feedback that cards showed only the single
+   off-talk event turn, so the displayed text did not match the
+   60-90 s of audio the reader was hearing.
+   ============================================================ */
+
+.transcript-box {
+  margin-top: 0.85rem;
+  border-top: 1px solid #ECE9F5;
+  padding-top: 0.6rem;
+}
+
+.transcript-box > summary {
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--dd-primary);
+  list-style: none;
+  user-select: none;
+  padding: 0.15rem 0;
+}
+
+.transcript-box > summary::-webkit-details-marker { display: none; }
+
+.transcript-box > summary::before {
+  content: "▸";
+  display: inline-block;
+  margin-right: 0.4rem;
+  transition: transform 0.15s ease;
+}
+
+.transcript-box[open] > summary::before { transform: rotate(90deg); }
+
+.transcript-box > summary:hover { color: var(--dd-primary-dark); }
+
+ol.transcript {
+  list-style: none;
+  margin: 0.55rem 0 0 0;
+  padding: 0.2rem 0.1rem 0.2rem 0;
+  max-height: 17rem;
+  overflow-y: auto;
+  font-size: 0.85rem;
+  line-height: 1.55;
+}
+
+ol.transcript .turn {
+  display: grid;
+  grid-template-columns: 2.7rem 2.2rem 1fr;
+  gap: 0.4rem;
+  padding: 0.3rem 0.45rem;
+  border-radius: 4px;
+  align-items: baseline;
+}
+
+ol.transcript .turn + .turn { margin-top: 0.1rem; }
+
+.turn-ts {
+  color: #9A93B5;
+  font-family: 'Roboto Mono', ui-monospace, monospace;
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.turn-spk {
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+/* Speaker colours mirror the waveform channels set in assets/js/main.js:
+   ch0 = AI (orange), ch1 = HM (blue). */
+.turn.spk-ai .turn-spk { color: #b5651d; }
+.turn.spk-hm .turn-spk { color: #3b6ea5; }
+.turn.spk-other .turn-spk { color: var(--dd-muted); }
+
+.turn-text { color: #2B2740; }
+
+.turn.is-event {
+  background: #FFF4E0;
+  box-shadow: inset 3px 0 0 #E8A33D;
+}
+
+.turn-flag {
+  display: inline-block;
+  margin-left: 0.45rem;
+  padding: 0.02rem 0.35rem;
+  background: #E8A33D;
+  color: #fff;
+  border-radius: 3px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  vertical-align: 0.08em;
+}
+
+/* ============================================================
+   "Coming soon" affordances — used where a resource (arXiv PDF,
+   IEEE DOI) genuinely does not exist yet. Rendered as a visibly
+   inert control rather than a link, so nobody clicks through to
+   a 404 placeholder URL.
+   ============================================================ */
+
+.button.coming-soon,
+.button.coming-soon:hover {
+  background: #EFEEF8;
+  border-color: #D6D3EA;
+  color: #6B6790;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.button.coming-soon .icon { opacity: 0.75; }
+
+.soon-tag {
+  margin-left: 0.55rem;
+  padding: 0.1rem 0.5rem;
+  background: var(--dd-primary);
+  color: #fff;
+  border-radius: 999px;
+  font-size: 0.6em;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.cite-pending {
+  max-width: 760px;
+  margin: 1rem auto 0;
+  padding: 0.7rem 1.1rem;
+  background: #EFEEF8;
+  border: 1px solid #D6D3EA;
+  border-radius: 8px;
+  color: #46426B;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.cite-pending i {
+  color: var(--dd-primary);
+  margin-right: 0.35rem;
+}
+
+.cite-pending strong { color: var(--dd-primary); }
+
+/* Navbar status pill shown while the paper is under review and the citation
+   section (§10) is commented out. */
+.navbar-status {
+  background: #EFEEF8;
+  border-color: #D6D3EA;
+  color: #46426B;
+  font-weight: 600;
+}
+
+.navbar-status .icon { color: var(--dd-primary); }
+
+/* ============================================================
+   Transcript follow-along + Persona & Scenario panel
+   ============================================================ */
+
+/* Rows are clickable seek targets. */
+ol.transcript .turn.is-seekable { cursor: pointer; }
+ol.transcript .turn.is-seekable:hover { background: #F3F1FB; }
+
+/* Already spoken: recede, but stay legible. */
+ol.transcript .turn.is-past .turn-text,
+ol.transcript .turn.is-past .turn-ts { opacity: 0.45; }
+
+/* Currently sounding. Both speakers can be lit at once (full duplex), so this
+   has to read clearly when two adjacent rows are active together. */
+ol.transcript .turn.is-playing {
+  background: var(--dd-primary-light);
+  box-shadow: inset 3px 0 0 var(--dd-primary);
+}
+
+ol.transcript .turn.is-playing .turn-text {
+  color: #14122B;
+  font-weight: 600;
+  opacity: 1;
+}
+
+ol.transcript .turn.is-playing .turn-ts {
+  color: var(--dd-primary);
+  opacity: 1;
+}
+
+/* The event row keeps its amber identity even while lit. */
+ol.transcript .turn.is-event.is-playing {
+  background: #FFE9C4;
+  box-shadow: inset 3px 0 0 #E8A33D;
+}
+
+/* Event-kind badge: named per annotation value, not a generic "事件". */
+.turn-flag {
+  display: inline-block;
+  margin-left: 0.45rem;
+  padding: 0.02rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.66rem;
+  font-weight: 700;
+  vertical-align: 0.08em;
+  white-space: nowrap;
+  color: #fff;
+  background: #E8A33D;
+}
+
+.turn.ev-off-talk .turn-flag    { background: #C0632B; }
+.turn.ev-backchannel .turn-flag { background: #2F7D6B; }
+
+.turn.ev-off-talk.is-event    { background: #FDEDE1; box-shadow: inset 3px 0 0 #C0632B; }
+.turn.ev-backchannel.is-event { background: #E4F4EF; box-shadow: inset 3px 0 0 #2F7D6B; }
+
+/* ---- Persona & Scenario ---- */
+.context-box {
+  margin-top: 0.85rem;
+  border-top: 1px solid #ECE9F5;
+  padding-top: 0.6rem;
+}
+
+.context-box > summary {
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--dd-primary);
+  list-style: none;
+  user-select: none;
+  padding: 0.15rem 0;
+}
+
+.context-box > summary::-webkit-details-marker { display: none; }
+
+.context-box > summary::before {
+  content: "▸";
+  display: inline-block;
+  margin-right: 0.4rem;
+  transition: transform 0.15s ease;
+}
+
+.context-box[open] > summary::before { transform: rotate(90deg); }
+.context-box > summary:hover { color: var(--dd-primary-dark); }
+
+.context-body { margin-top: 0.6rem; }
+
+.ctx-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem 0.9rem;
+  margin: 0 0 0.85rem 0;
+  padding: 0.65rem 0.8rem;
+  background: #F8F7FC;
+  border-radius: 6px;
+  font-size: 0.82rem;
+}
+
+.ctx-row { display: flex; gap: 0.45rem; align-items: baseline; min-width: 0; }
+
+.ctx-row dt {
+  flex: 0 0 auto;
+  color: var(--dd-muted);
+  font-weight: 600;
+  font-size: 0.76rem;
+}
+
+.ctx-row dd {
+  margin: 0;
+  color: #2B2740;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.persona-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.6rem;
+}
+
+.persona {
+  padding: 0.65rem 0.8rem;
+  border-radius: 6px;
+  background: #FFFFFF;
+  border: 1px solid var(--dd-rule);
+  border-left-width: 3px;
+  font-size: 0.83rem;
+}
+
+/* Border colour mirrors the speaker's waveform channel. */
+.persona.spk-hm { border-left-color: #3b6ea5; }
+.persona.spk-ai { border-left-color: #b5651d; }
+.persona.spk-other { border-left-color: var(--dd-muted); }
+
+.persona-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 0.3rem;
+}
+
+.persona-role {
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  padding: 0.05rem 0.4rem;
+  border-radius: 3px;
+  color: #fff;
+}
+
+.persona.spk-hm .persona-role { background: #3b6ea5; }
+.persona.spk-ai .persona-role { background: #b5651d; }
+.persona.spk-other .persona-role { background: var(--dd-muted); }
+
+.persona-name { font-weight: 700; color: #1A1A2E; }
+
+.persona-meta { color: var(--dd-muted); font-size: 0.76rem; }
+
+.persona-tag {
+  display: inline-block;
+  margin-bottom: 0.3rem;
+  padding: 0.05rem 0.45rem;
+  background: var(--dd-primary-light);
+  color: #3F3F9E;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 600;
+}
+
+.persona-traits { color: #4A4660; margin-bottom: 0.35rem; }
+
+.persona-intro {
+  margin: 0;
+  padding: 0.4rem 0.6rem;
+  background: #FAFAFD;
+  border-left: 2px solid var(--dd-rule);
+  border-radius: 0 4px 4px 0;
+  color: #565272;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .ctx-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   Rendered sound-event strip. Lists only events the renderer actually
+   mixed in (manifest status == "selected") that overlap the excerpt.
+   Clips with none say so, because in this off-talk subset the absence
+   is the common case and worth stating.
+   ============================================================ */
+.sound-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0.7rem 0 0;
+  padding: 0.5rem 0.6rem;
+  background: #F4F8F6;
+  border: 1px solid #D5E6DF;
+  border-radius: 6px;
+  font-size: 0.8rem;
+}
+
+.sound-strip > i { color: #2F7D6B; }
+
+.sound-label {
+  font-weight: 700;
+  color: #23604F;
+  margin-right: 0.2rem;
+}
+
+.sound-strip.is-empty {
+  background: #FAFAFC;
+  border-color: var(--dd-rule);
+  color: var(--dd-muted);
+}
+
+.sound-strip.is-empty > i { color: var(--dd-muted); }
+
+.sound-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.15rem 0.5rem;
+  background: #fff;
+  border: 1px solid #BFDCD2;
+  border-radius: 999px;
+  color: #23604F;
+  font: inherit;
+  font-size: 0.76rem;
+  cursor: pointer;
+  transition: background 0.12s ease, border-color 0.12s ease;
+}
+
+.sound-chip:hover {
+  background: #E4F4EF;
+  border-color: #2F7D6B;
+}
+
+.sound-chip i { font-size: 0.8em; opacity: 0.85; }
+
+.sound-ts {
+  font-family: 'Roboto Mono', ui-monospace, monospace;
+  font-size: 0.9em;
+  color: #6E8B82;
+  font-variant-numeric: tabular-nums;
+}
+
+.chip-int {
+  padding: 0 0.25rem;
+  background: #2F7D6B;
+  color: #fff;
+  border-radius: 3px;
+  font-size: 0.85em;
+  font-weight: 700;
+}
+
+
+
+/* ============================================================
+   Per-channel mute toggles. The clips are assembled with
+   ch0 = HM (speech + ambience) and ch1 = AI (speech only), so
+   muting one is a genuine listening mode.
+   ============================================================ */
+.ctl .key {
+  margin-left: auto;
+  display: inline-flex;
+  gap: 0.35rem;
+  align-items: center;
+}
+
+.ch-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.12rem 0.5rem;
+  border: 1px solid var(--dd-rule);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--dd-muted);
+  font: inherit;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: background 0.12s ease, border-color 0.12s ease, opacity 0.12s ease;
+}
+
+.ch-toggle:hover { border-color: var(--dd-primary); color: var(--dd-text); }
+
+.ch-toggle:disabled { cursor: not-allowed; opacity: 0.5; }
+
+/* Muted: struck through and faded, with the colour swatch drained. */
+.ch-toggle.is-muted {
+  background: #F4F4F7;
+  border-color: var(--dd-rule);
+  color: #A9A6BC;
+  text-decoration: line-through;
+}
+
+.ch-toggle.is-muted .sw { background: #C9C7D6 !important; }
+
+/* Grey the matching mono waveform so sight matches sound.
+   The page now uses two independent mono wavesurfers (one per
+   channel), so mute drops opacity on whichever .wave-hm / .wave-ai
+   was toggled — NOT a generic half of a single canvas. */
+.wave.is-muted { opacity: 0.3; }
+
+/* Unit suffix inside a stat tile, e.g. "7.9 min" — smaller and lighter so the
+   number still reads as the headline. */
+.stat-tile .num .unit {
+  font-size: 0.42em;
+  font-weight: 500;
+  color: var(--dd-muted);
+  margin-left: 0.18em;
+  letter-spacing: 0.02em;
+}
+
+/* Hint next to the channel toggles. */
+.ch-hint {
+  color: var(--dd-muted);
+  font-size: 0.72rem;
+  font-style: italic;
+  margin-right: 0.15rem;
+  white-space: nowrap;
+}
+
+/* "w. bg" / "w/o bg" qualifier inside a channel toggle. */
+.ch-note {
+  color: var(--dd-muted);
+  font-size: 0.88em;
+}
+
+.ch-toggle.is-muted .ch-note { color: #B7B4C6; }
+
+
+/* Footnote under the stat strip, for qualifying what a tile actually measures. */
+.stat-footnote {
+  max-width: 760px;
+  margin: 1.1rem auto 0;
+  color: var(--dd-muted);
+  font-size: 0.84rem;
+  line-height: 1.55;
+  text-align: center;
+}
+
+/* In-sentence pause, from a `<silence Ns>` tag in the annotation. One of the
+   paper's three full-duplex behaviours, so it is shown rather than stripped. */
+.pause-mark {
+  display: inline-block;
+  margin: 0 0.15rem;
+  padding: 0 0.3rem;
+  background: #EEF2F7;
+  border: 1px solid #D3DCE6;
+  border-radius: 3px;
+  color: #5A6B7C;
+  font-size: 0.78em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  vertical-align: 0.05em;
+}
+
+.turn.is-playing .pause-mark { background: #E3E9F2; color: #3E4C5A; }
