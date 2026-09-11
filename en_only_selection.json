@@ -1,0 +1,1659 @@
+{
+  "version": "v2-bilingual-showcase",
+  "n_total": 6,
+  "samples": [
+    {
+      "dialogue_id": 1018,
+      "scenario_zh": "1018_Emily_and_David_house_hunting",
+      "label_zh": "混合",
+      "src_wav": "/nfs-speech-data/fanwenke/conversion_data_build/20260908_en_data_1681_sample_soundscape_rendered_v34/d_1018_Emily_and_David_house_hunting_2908/assembled/fullduplex_with_background.wav",
+      "event_turn_id": 3,
+      "event_type": "backchannel",
+      "event_start_sec": 10.5215,
+      "event_end_sec": 11.6446,
+      "clip_start_sec": 0.0,
+      "clip_end_sec": 116.415,
+      "clip_duration_sec": 116.415,
+      "speaker_event": "HM",
+      "event_text": "<user_backchannel>Uh-huh.</user_backchannel>",
+      "language": "en",
+      "transcript": [
+        {
+          "turn_id": 0,
+          "speaker": "AI",
+          "start_sec": 0.389,
+          "end_sec": 3.332,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Hey honey. You back at the hotel?"
+        },
+        {
+          "turn_id": 1,
+          "speaker": "HM",
+          "start_sec": 3.582,
+          "end_sec": 7.611,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Yeah, just walked in. The keynote was exhausting. What are you still doing up?"
+        },
+        {
+          "turn_id": 2,
+          "speaker": "AI",
+          "start_sec": 7.961,
+          "end_sec": 17.867,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "I couldn't sleep. I've been staring at Zillow and I think I found the perfect house on Maplewood. And my brain is buzzing. I know we said we'd wait, but this one is special."
+        },
+        {
+          "turn_id": 3,
+          "speaker": "HM",
+          "start_sec": 10.521,
+          "end_sec": 11.645,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Uh-huh."
+        },
+        {
+          "turn_id": 4,
+          "speaker": "HM",
+          "start_sec": 18.177,
+          "end_sec": 21.353,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Another one? I thought we were taking a break for a bit."
+        },
+        {
+          "turn_id": 5,
+          "speaker": "AI",
+          "start_sec": 21.673,
+          "end_sec": 26.293,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "I know, but I actually went to see this one today. I managed to get us a private tour this afternoon."
+        },
+        {
+          "turn_id": 6,
+          "speaker": "HM",
+          "start_sec": 25.694,
+          "end_sec": 27.743,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Wait, you toured a house without me?"
+        },
+        {
+          "turn_id": 7,
+          "speaker": "AI",
+          "start_sec": 27.973,
+          "end_sec": 36.964,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "I had to! It's on Maplewood Avenue and I knew it would go fast and I couldn't risk losing it. It's everything we want, and I didn't want us to miss out."
+        },
+        {
+          "turn_id": 8,
+          "speaker": "HM",
+          "start_sec": 32.233,
+          "end_sec": 33.02,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Okay."
+        },
+        {
+          "turn_id": 9,
+          "speaker": "HM",
+          "start_sec": 37.214,
+          "end_sec": 44.076,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Okay, slow down. A private tour on Maplewood? That street is usually way out of our league."
+        },
+        {
+          "turn_id": 10,
+          "speaker": "AI",
+          "start_sec": 44.346,
+          "end_sec": 53.249,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "The layout is just flawless. It's a four-bedroom, and it has an actual mudroom for the kids' muddy shoes, which we desperately need."
+        },
+        {
+          "turn_id": 11,
+          "speaker": "HM",
+          "start_sec": 53.469,
+          "end_sec": 59.533,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "A mudroom sounds nice, but we agreed[pause 0.8s] to stick to our list. Does it have the home office?"
+        },
+        {
+          "turn_id": 12,
+          "speaker": "AI",
+          "start_sec": 59.773,
+          "end_sec": 74.177,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Yes, a perfect spot for your desk. But David, the absolute best part? It's zoned for Lincoln Elementary that's the top-rated school district we've always wanted for the kids. We wouldn't even have to do the magnet lottery for Leo and Mia this year."
+        },
+        {
+          "turn_id": 13,
+          "speaker": "HM",
+          "start_sec": 67.594,
+          "end_sec": 68.491,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "No way."
+        },
+        {
+          "turn_id": 14,
+          "speaker": "HM",
+          "start_sec": 74.497,
+          "end_sec": 80.767,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Okay, Lincoln is incredible. But honey, I get it, but... what's the catch?"
+        },
+        {
+          "turn_id": 15,
+          "speaker": "AI",
+          "start_sec": 81.107,
+          "end_sec": 82.829,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Why does there have to be a catch?"
+        },
+        {
+          "turn_id": 16,
+          "speaker": "HM",
+          "start_sec": 83.209,
+          "end_sec": 89.127,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Because you're talking a mile a minute. A four-bedroom[pause 0.7s] in the Lincoln catchment is prime real estate."
+        },
+        {
+          "turn_id": 17,
+          "speaker": "AI",
+          "start_sec": 89.357,
+          "end_sec": 92.998,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "It's just such a rare opportunity, you know? Houses like this never pop up, and we'd be absolutely crazy not to at least try and see if we can swing it."
+        },
+        {
+          "turn_id": 18,
+          "speaker": "HM",
+          "start_sec": 92.397,
+          "end_sec": 95.854,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Emily. I know that tone. What's the listing price?"
+        },
+        {
+          "turn_id": 19,
+          "speaker": "AI",
+          "start_sec": 96.224,
+          "end_sec": 111.592,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Well, we agreed our budget was six hundred thousand. And we have savings. I mean, we could maybe stretch a little bit, just for this one. Plus I got that bonus at work, so we have a little more wiggle room than we originally thought."
+        },
+        {
+          "turn_id": 20,
+          "speaker": "HM",
+          "start_sec": 101.745,
+          "end_sec": 102.175,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Right."
+        },
+        {
+          "turn_id": 21,
+          "speaker": "HM",
+          "start_sec": 111.902,
+          "end_sec": 116.066,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Em, you know what debt did to my parents. Just tell me the number."
+        }
+      ],
+      "context": {
+        "theme": "",
+        "main_topic": "Discussing the potential purchase of a house on Maplewood Avenue over budget",
+        "goal": "Emily: Convince David to stretch their budget for a house in the top school catchment. | David: Keep the family financially secure while still making Emily happy.",
+        "location": "Kitchen and Chicago hotel room",
+        "time_of_day": "Late evening",
+        "interaction_type": "phone",
+        "scene_medium": "phone",
+        "spatial_mode": "split",
+        "relationship_dynamic": "Emily: David's wife of 10 years; they normally make big decisions together. | David: Emily's husband; trusts her instincts but worries about overextending.",
+        "expected_turns": 73,
+        "characters": [
+          {
+            "role": "AI",
+            "name": "Emily",
+            "age": 36,
+            "gender": "女",
+            "occupation": "Project manager",
+            "personality_tag": "干练白领 / 飒爽御姐",
+            "personality_traits": "Organized, optimistic, pushy when she believes she's right, deeply caring",
+            "self_introduction": "I'm Emily, a project manager and mother of two, 36 years old. I'm organized and driven, always looking for the best opportunities for my kids, especially when it comes to their education."
+          },
+          {
+            "role": "HM",
+            "name": "David",
+            "age": 38,
+            "gender": "男",
+            "occupation": "Software engineer",
+            "personality_tag": "理工男 / 科技宅",
+            "personality_traits": "Pragmatic, calm, protective, slow to warm up to new ideas",
+            "self_introduction": "I'm David, a software engineer and father of two, 38 years old. I'm pragmatic and cautious with money, especially after seeing my parents struggle with debt. I love my family and want to keep them financially secure."
+          }
+        ],
+        "ambience": [
+          {
+            "role_key": "role_1",
+            "location": "Kitchen and Chicago hotel room",
+            "scene_class": "street_outdoor"
+          },
+          {
+            "role_key": "role_2",
+            "location": "Kitchen and Chicago hotel room",
+            "scene_class": "street_outdoor"
+          }
+        ]
+      },
+      "sound_events": [
+        {
+          "request_id": "turn_1:0",
+          "event_class": "door_close",
+          "macro_class": "",
+          "intensity": "medium",
+          "start_sec": 3.332,
+          "end_sec": 3.582,
+          "duration_sec": 0.25,
+          "asset_id": "zapsplat:f6ea6edb73c7b4962224",
+          "channels": [
+            "HM"
+          ]
+        }
+      ],
+      "clip_window_raw_sec": [
+        0.0,
+        116.066
+      ],
+      "clip_snapped_to_turns": true,
+      "channel_roles": [
+        "HM",
+        "AI"
+      ],
+      "channel_stems": {
+        "HM": "solo_HM_with_background.wav",
+        "AI": "solo_AI_with_background.wav"
+      },
+      "source_sample_rate": 22050,
+      "opus_sample_rate": 24000,
+      "loudness": {
+        "measured_lufs": -19.5,
+        "gain_db": 3.5,
+        "final_lufs": -16.0,
+        "final_peak_dbfs": -1.59
+      },
+      "watermark_uuid": "c7f3d6a77e2e41149406c51e13a35948",
+      "playback_files": {
+        "hm": {
+          "opus": "assets/audio/_showcase/hl01_event_hm.opus",
+          "m4a": "assets/audio/_showcase/hl01_event_hm.m4a"
+        },
+        "ai": {
+          "opus": "assets/audio/_showcase/hl01_event_ai.opus",
+          "m4a": "assets/audio/_showcase/hl01_event_ai.m4a"
+        }
+      }
+    },
+    {
+      "dialogue_id": 1148,
+      "scenario_zh": "1148_Emma_and_Sophie_shelter_dog_progress",
+      "label_zh": "混合",
+      "src_wav": "/nfs-speech-data/fanwenke/conversion_data_build/20260908_en_data_1681_sample_soundscape_rendered_v34/d_1148_Emma_and_Sophie_shelter_dog_progress_724/assembled/fullduplex_with_background.wav",
+      "event_turn_id": 46,
+      "event_type": "interrupt",
+      "event_start_sec": 276.2894,
+      "event_end_sec": 276.7266,
+      "clip_start_sec": 267.619,
+      "clip_end_sec": 383.852,
+      "clip_duration_sec": 116.233,
+      "speaker_event": "AI",
+      "event_text": "<user_interrupt>Wait.",
+      "language": "en",
+      "transcript": [
+        {
+          "turn_id": 45,
+          "speaker": "HM",
+          "start_sec": 0.35,
+          "end_sec": 9.27,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Okay, take a deep breath. I hear you, and if you just need some company around the apartment, I might actually have a much safer idea like adopting a kitten. My neighbor's cat just had a litter, and they're looking for homes."
+        },
+        {
+          "turn_id": 46,
+          "speaker": "AI",
+          "start_sec": 8.67,
+          "end_sec": 9.107,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Wait."
+        },
+        {
+          "turn_id": 47,
+          "speaker": "AI",
+          "start_sec": 9.59,
+          "end_sec": 12.385,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "A safer idea? What does that even mean?"
+        },
+        {
+          "turn_id": 48,
+          "speaker": "HM",
+          "start_sec": 12.735,
+          "end_sec": 17.388,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Something that won't get you thrown out on the street by your crazy landlord."
+        },
+        {
+          "turn_id": 49,
+          "speaker": "AI",
+          "start_sec": 17.748,
+          "end_sec": 22.053,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "If you're about to suggest a goldfish, I'm hanging up right now."
+        },
+        {
+          "turn_id": 50,
+          "speaker": "HM",
+          "start_sec": 22.303,
+          "end_sec": 26.899,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "I promise it's not a fish. Just hear me out."
+        },
+        {
+          "turn_id": 51,
+          "speaker": "AI",
+          "start_sec": 27.289,
+          "end_sec": 30.776,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Okay, fine, I'm listening. What is it?"
+        },
+        {
+          "turn_id": 52,
+          "speaker": "HM",
+          "start_sec": 31.056,
+          "end_sec": 36.747,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "You know my neighbor, Mrs. Gable? Her cat just had a litter of kittens a few weeks ago."
+        },
+        {
+          "turn_id": 53,
+          "speaker": "AI",
+          "start_sec": 33.536,
+          "end_sec": 34.57,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Right."
+        },
+        {
+          "turn_id": 54,
+          "speaker": "AI",
+          "start_sec": 37.057,
+          "end_sec": 44.148,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Wait, kittens? Sophie, you know I'm totally a dog person. I wouldn't even know what to do with a cat."
+        },
+        {
+          "turn_id": 55,
+          "speaker": "HM",
+          "start_sec": 44.598,
+          "end_sec": 49.412,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "You'd figure it out! Plus, they stay inside and they don't bark."
+        },
+        {
+          "turn_id": 56,
+          "speaker": "AI",
+          "start_sec": 49.742,
+          "end_sec": 53.895,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "I guess that's true. But are they actually friendly?"
+        },
+        {
+          "turn_id": 57,
+          "speaker": "HM",
+          "start_sec": 54.195,
+          "end_sec": 62.765,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "They are ridiculously affectionate. Mrs. Gable lets me hold them, and they just purr and fall asleep right in your hands. It's the sweetest thing."
+        },
+        {
+          "turn_id": 58,
+          "speaker": "AI",
+          "start_sec": 63.055,
+          "end_sec": 67.744,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Oh my god, really? Just falling asleep in your hands?"
+        },
+        {
+          "turn_id": 59,
+          "speaker": "HM",
+          "start_sec": 68.054,
+          "end_sec": 76.843,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Yep. And she's desperately looking for good homes for them. She's practically begging people in our apartment complex to take one off her hands."
+        },
+        {
+          "turn_id": 60,
+          "speaker": "AI",
+          "start_sec": 75.974,
+          "end_sec": 76.68,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Oh wow."
+        },
+        {
+          "turn_id": 61,
+          "speaker": "AI",
+          "start_sec": 77.063,
+          "end_sec": 85.283,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Okay, wait. How old are they? Are they like, ready to be adopted right now, or do they still need their mom?"
+        },
+        {
+          "turn_id": 62,
+          "speaker": "HM",
+          "start_sec": 84.683,
+          "end_sec": 91.688,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "They're totally ready. They're about eight weeks old, eating on their own and running around causing absolute chaos in her living room."
+        },
+        {
+          "turn_id": 63,
+          "speaker": "AI",
+          "start_sec": 91.918,
+          "end_sec": 97.72,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "That is so incredibly tempting. What colors are they? Is there a little orange guy?"
+        },
+        {
+          "turn_id": 64,
+          "speaker": "HM",
+          "start_sec": 97.99,
+          "end_sec": 102.786,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "There's an orange tabby, a tuxedo, and two black ones. Want me to go check?"
+        },
+        {
+          "turn_id": 65,
+          "speaker": "AI",
+          "start_sec": 103.026,
+          "end_sec": 104.809,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "You can just go over there right now?"
+        },
+        {
+          "turn_id": 66,
+          "speaker": "HM",
+          "start_sec": 105.179,
+          "end_sec": 115.883,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Are you kidding? She loves visitors. I'll walk across the hall right now and snap a few really good pictures for you so you can see them. They're just the cutest little things, you're gonna fall in love."
+        },
+        {
+          "turn_id": 67,
+          "speaker": "AI",
+          "start_sec": 112.419,
+          "end_sec": 113.239,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Okay."
+        }
+      ],
+      "context": {
+        "theme": "",
+        "main_topic": "Emma calls Sophie to share the breakthrough of a shy shelter dog, Buster. The conversation naturally shifts to her longing for a pet and the obstacles of her apartment's pet policy, eventually leading to Sophie's suggestion of adopting a kitten from her neighbor's litter.",
+        "goal": "Emma: Share the joy of a shelter dog's progress and explore the idea of adopting a pet. | Sophie: Listen to Emma's story and offer a pragmatic suggestion about getting a cat instead.",
+        "location": "Emma's 2015 Honda Civic in the shelter parking lot; Sophie's home",
+        "time_of_day": "Late Saturday morning",
+        "interaction_type": "phone_call",
+        "scene_medium": "face_to_face",
+        "spatial_mode": "shared",
+        "relationship_dynamic": "Emma: Close friend of Sophie; they met in college and share a love for animals. | Sophie: Emma's close friend; they often chat about animals and life.",
+        "expected_turns": 71,
+        "characters": [
+          {
+            "role": "AI",
+            "name": "Emma",
+            "age": 28,
+            "gender": "女",
+            "occupation": "Part-time elementary school teacher and animal shelter volunteer",
+            "personality_tag": "邻家女孩 / 知心闺蜜",
+            "personality_traits": "Compassionate, slightly impulsive, optimistic",
+            "self_introduction": "I'm Emma, a 28-year-old part-time elementary teacher. Every Saturday I volunteer at the local animal shelter. I rent a small apartment at Maplewood Court, but the strict no-dogs policy makes me feel so lonely. I'd love to have a pet companion."
+          },
+          {
+            "role": "HM",
+            "name": "Sophie",
+            "age": 29,
+            "gender": "女",
+            "occupation": "HR worker at a tech company",
+            "personality_tag": "干练白领 / 飒爽御姐",
+            "personality_traits": "Practical, supportive, curious",
+            "self_introduction": "I'm Sophie, 29, working in HR at a tech company. I grew up with dogs but now live alone and don't have any pets because of my long hours. I'm always happy to listen to Emma's shelter stories and offer practical advice."
+          }
+        ],
+        "ambience": [
+          {
+            "role_key": "shared",
+            "location": "Emma's 2015 Honda Civic in the shelter parking lot",
+            "scene_class": "vehicle_inside"
+          }
+        ]
+      },
+      "sound_events": [],
+      "clip_window_raw_sec": [
+        276.289,
+        380.858
+      ],
+      "clip_snapped_to_turns": true,
+      "channel_roles": [
+        "HM",
+        "AI"
+      ],
+      "channel_stems": {
+        "HM": "solo_HM_with_background.wav",
+        "AI": "solo_AI_with_background.wav"
+      },
+      "source_sample_rate": 22050,
+      "opus_sample_rate": 24000,
+      "loudness": {
+        "measured_lufs": -20.05,
+        "peak_limited": true,
+        "gain_db": 3.9,
+        "final_lufs": -16.15,
+        "final_peak_dbfs": -1.5
+      },
+      "watermark_uuid": "a5656bdc56f84c25aebdb456ca7007c6",
+      "playback_files": {
+        "hm": {
+          "opus": "assets/audio/_showcase/hl02_event_hm.opus",
+          "m4a": "assets/audio/_showcase/hl02_event_hm.m4a"
+        },
+        "ai": {
+          "opus": "assets/audio/_showcase/hl02_event_ai.opus",
+          "m4a": "assets/audio/_showcase/hl02_event_ai.m4a"
+        }
+      }
+    },
+    {
+      "dialogue_id": 159,
+      "scenario_zh": "159_Anita_and_Jacob_small_claims_prep",
+      "label_zh": "混合",
+      "src_wav": "/nfs-speech-data/fanwenke/conversion_data_build/20260908_en_data_1681_sample_soundscape_rendered_v34/d_159_Anita_and_Jacob_small_claims_prep_1144/assembled/fullduplex_with_background.wav",
+      "event_turn_id": 12,
+      "event_type": "interrupt",
+      "event_start_sec": 78.9401,
+      "event_end_sec": 84.8985,
+      "clip_start_sec": 71.86,
+      "clip_end_sec": 171.189,
+      "clip_duration_sec": 99.329,
+      "speaker_event": "HM",
+      "event_text": "<user_interrupt>Exactly! It's a load of nonsense. ",
+      "language": "en",
+      "transcript": [
+        {
+          "turn_id": 11,
+          "speaker": "AI",
+          "start_sec": 0.28,
+          "end_sec": 7.64,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "House settling? That doesn't warp a solid quartz worktop in a fortnight. I'd suggest you send him a letter before action."
+        },
+        {
+          "turn_id": 12,
+          "speaker": "HM",
+          "start_sec": 7.08,
+          "end_sec": 13.038,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Exactly! It's a load of nonsense. He just doesn't want to come back and sort out his shoddy work."
+        },
+        {
+          "turn_id": 13,
+          "speaker": "AI",
+          "start_sec": 13.268,
+          "end_sec": 21.575,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Okay, let's take a breath. It sounds like a proper mess, but we can sort this out. I just need a few more facts before we panic."
+        },
+        {
+          "turn_id": 14,
+          "speaker": "HM",
+          "start_sec": 21.825,
+          "end_sec": 25.866,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Do I even have a case for small claims?"
+        },
+        {
+          "turn_id": 15,
+          "speaker": "AI",
+          "start_sec": 26.216,
+          "end_sec": 34.346,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "You might well do. But before we jump straight to small claims court, we need to look at what you've actually got in writing to support your claim."
+        },
+        {
+          "turn_id": 16,
+          "speaker": "HM",
+          "start_sec": 33.756,
+          "end_sec": 39.46,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "In writing? I've got the photos I just printed out. They show the cracks clear as day."
+        },
+        {
+          "turn_id": 17,
+          "speaker": "AI",
+          "start_sec": 39.71,
+          "end_sec": 47.828,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Photos are brilliant for proving the damage. But the key question is how you've communicated your complaints to Gary so far."
+        },
+        {
+          "turn_id": 18,
+          "speaker": "HM",
+          "start_sec": 48.038,
+          "end_sec": 61.207,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Oh. Well, mostly we just talked on the phone. Or he'd chat to me while he was having his tea in the garden. I didn't put anything in writing. Wait, no—I texted him the photos first, and then he rang me back."
+        },
+        {
+          "turn_id": 19,
+          "speaker": "AI",
+          "start_sec": 54.878,
+          "end_sec": 55.364,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Right."
+        },
+        {
+          "turn_id": 20,
+          "speaker": "AI",
+          "start_sec": 61.407,
+          "end_sec": 69.848,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "That's a start. But what about the original quote for the eight and a half grand? Did he email you a proper breakdown of the work?"
+        },
+        {
+          "turn_id": 21,
+          "speaker": "HM",
+          "start_sec": 70.238,
+          "end_sec": 75.508,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Oh, I'm not sure. I'd have to check my laptop."
+        },
+        {
+          "turn_id": 22,
+          "speaker": "AI",
+          "start_sec": 75.838,
+          "end_sec": 82.515,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Go and grab it. We need to see exactly what he promised you in writing before we can do anything else."
+        },
+        {
+          "turn_id": 23,
+          "speaker": "HM",
+          "start_sec": 82.765,
+          "end_sec": 90.572,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Right, I've got the laptop. Just waiting for the screen to[pause 1s] wake up. Come on, you stupid thing."
+        },
+        {
+          "turn_id": 24,
+          "speaker": "AI",
+          "start_sec": 90.942,
+          "end_sec": 99.069,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "No rush. Let's talk about how you actually agreed to this work. Did Gary give you a proper contract to sign?"
+        }
+      ],
+      "context": {
+        "theme": "",
+        "main_topic": "Anita seeks legal advice about a faulty kitchen renovation, discussing evidence and the process of small claims.",
+        "goal": "Anita: Understand whether she has a strong enough case to pursue the contractor through small claims. | Jacob: Give Anita a realistic assessment and help her organise her evidence.",
+        "location": "Anita's home (West Midlands) and Jacob's home (London)",
+        "time_of_day": "Saturday morning",
+        "interaction_type": "求助请教",
+        "scene_medium": "face_to_face",
+        "spatial_mode": "shared",
+        "relationship_dynamic": "Anita: Jacob is her cousin, a solicitor; they're close and she trusts his legal opinion. | Jacob: Anita's older cousin; he's always been the family's go-to for legal questions.",
+        "expected_turns": 70,
+        "characters": [
+          {
+            "role": "AI",
+            "name": "Jacob",
+            "age": 42,
+            "gender": "男",
+            "occupation": "Solicitor (civil litigation)",
+            "personality_tag": "严肃男老师 / 老教授",
+            "personality_traits": "Methodical, kind, protective, quick to spot a weak argument.",
+            "self_introduction": "I'm Jacob, a 42-year-old solicitor. I mainly handle commercial disputes but often help family with legal questions. My cousin Anita is calling about a dodgy kitchen renovation, and I'm going to help her draft a letter before action."
+          },
+          {
+            "role": "HM",
+            "name": "Anita",
+            "age": 39,
+            "gender": "女",
+            "occupation": "Primary school teacher",
+            "personality_tag": "严肃女老师 / 严厉长辈",
+            "personality_traits": "Conscientious, a little anxious, but determined when wronged.",
+            "self_introduction": "I'm Anita, a 39-year-old primary school teacher. I recently paid £8,500 for a kitchen renovation that went wrong, and I'm calling my cousin Jacob for advice on whether to take the contractor to small claims court."
+          }
+        ],
+        "ambience": [
+          {
+            "role_key": "shared",
+            "location": "Anita's home (West Midlands) and Jacob's home (London)",
+            "scene_class": "home_living"
+          }
+        ]
+      },
+      "sound_events": [
+        {
+          "request_id": "turn_22:0",
+          "event_class": "footstep_indoor",
+          "macro_class": "",
+          "intensity": "low",
+          "start_sec": 82.515,
+          "end_sec": 82.765,
+          "duration_sec": 0.25,
+          "asset_id": "zapsplat:05e1085a5c093f2bb081",
+          "channels": [
+            "AI",
+            "HM"
+          ]
+        }
+      ],
+      "clip_window_raw_sec": [
+        78.94,
+        170.929
+      ],
+      "clip_snapped_to_turns": true,
+      "channel_roles": [
+        "HM",
+        "AI"
+      ],
+      "channel_stems": {
+        "HM": "solo_HM_with_background.wav",
+        "AI": "solo_AI_with_background.wav"
+      },
+      "source_sample_rate": 22050,
+      "opus_sample_rate": 24000,
+      "loudness": {
+        "measured_lufs": -21.85,
+        "peak_limited": true,
+        "gain_db": 4.1,
+        "final_lufs": -17.75,
+        "final_peak_dbfs": -1.5
+      },
+      "watermark_uuid": "a6ac0166fd004852a4d4baeb4f123476",
+      "playback_files": {
+        "hm": {
+          "opus": "assets/audio/_showcase/hl03_event_hm.opus",
+          "m4a": "assets/audio/_showcase/hl03_event_hm.m4a"
+        },
+        "ai": {
+          "opus": "assets/audio/_showcase/hl03_event_ai.opus",
+          "m4a": "assets/audio/_showcase/hl03_event_ai.m4a"
+        }
+      }
+    },
+    {
+      "dialogue_id": 2280,
+      "scenario_zh": "2280_Megan_and_Carlos_bulk_mailing",
+      "label_zh": "混合",
+      "src_wav": "/nfs-speech-data/fanwenke/conversion_data_build/20260908_en_data_1681_sample_soundscape_rendered_v34/d_2280_Megan_and_Carlos_bulk_mailing_2877/assembled/fullduplex_with_background.wav",
+      "event_turn_id": 18,
+      "event_type": "interrupt",
+      "event_start_sec": 98.0675,
+      "event_end_sec": 103.9758,
+      "clip_start_sec": 90.797,
+      "clip_end_sec": 212.582,
+      "clip_duration_sec": 121.785,
+      "speaker_event": "HM",
+      "event_text": "<user_interrupt>The contents? You mean the crisps?",
+      "language": "en",
+      "transcript": [
+        {
+          "turn_id": 17,
+          "speaker": "AI",
+          "start_sec": 0.21,
+          "end_sec": 7.82,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "We'll set you up with an online business account first. But before we lock in that standard rate, we should talk about the contents to make sure there aren't any restrictions on sending food items."
+        },
+        {
+          "turn_id": 18,
+          "speaker": "HM",
+          "start_sec": 7.27,
+          "end_sec": 13.179,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "The contents? You mean the crisps? They won't go off in the post, if that's what you mean."
+        },
+        {
+          "turn_id": 19,
+          "speaker": "AI",
+          "start_sec": 13.389,
+          "end_sec": 23.372,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Actually, I was thinking about the discount codes. Since they have a clear monetary value, we might want to look at the service tiers to make sure they're covered in case of loss or damage."
+        },
+        {
+          "turn_id": 20,
+          "speaker": "HM",
+          "start_sec": 20.629,
+          "end_sec": 22.18,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Oh, I see."
+        },
+        {
+          "turn_id": 21,
+          "speaker": "HM",
+          "start_sec": 23.762,
+          "end_sec": 28.943,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "What sort of tiers are[pause 1.9s] we talking about?"
+        },
+        {
+          "turn_id": 22,
+          "speaker": "AI",
+          "start_sec": 29.163,
+          "end_sec": 34.384,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "So, standard second class gets them there in two to three days, but there's no delivery confirmation."
+        },
+        {
+          "turn_id": 23,
+          "speaker": "HM",
+          "start_sec": 34.594,
+          "end_sec": 39.646,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Right, just drop them in a postbox and hope for the best."
+        },
+        {
+          "turn_id": 24,
+          "speaker": "AI",
+          "start_sec": 39.896,
+          "end_sec": 44.416,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Exactly. The next step up is Royal Mail Tracked 48. That gives you full tracking to the delivery point, so you know when they arrive."
+        },
+        {
+          "turn_id": 25,
+          "speaker": "HM",
+          "start_sec": 43.896,
+          "end_sec": 46.716,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "But that costs more, obviously."
+        },
+        {
+          "turn_id": 26,
+          "speaker": "AI",
+          "start_sec": 46.936,
+          "end_sec": 50.542,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "It does. It sits at about one pound forty per item."
+        },
+        {
+          "turn_id": 27,
+          "speaker": "HM",
+          "start_sec": 50.902,
+          "end_sec": 61.045,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Ouch. That more than doubles my postage costs right out of the gate. I mean, do I really need tracking for a bit of direct mail?"
+        },
+        {
+          "turn_id": 28,
+          "speaker": "AI",
+          "start_sec": 61.365,
+          "end_sec": 67.625,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "That depends on what's inside. Are those discount codes single-use, or generic?"
+        },
+        {
+          "turn_id": 29,
+          "speaker": "HM",
+          "start_sec": 67.965,
+          "end_sec": 78.759,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "They're unique. Twenty per cent off their first three boxes. If someone else nicks the code, we lose out so we can't afford to have them go missing. Maybe we do need tracking after all."
+        },
+        {
+          "turn_id": 30,
+          "speaker": "AI",
+          "start_sec": 74.805,
+          "end_sec": 76.318,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Ah, I see."
+        },
+        {
+          "turn_id": 31,
+          "speaker": "AI",
+          "start_sec": 79.049,
+          "end_sec": 85.977,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "That makes them high-value items. If a standard letter goes missing, you wouldn't know until a customer complains about it."
+        },
+        {
+          "turn_id": 32,
+          "speaker": "HM",
+          "start_sec": 86.237,
+          "end_sec": 93.043,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Oh, I hadn't thought about that. And it's not just the codes, actually. Hang on."
+        },
+        {
+          "turn_id": 33,
+          "speaker": "AI",
+          "start_sec": 93.413,
+          "end_sec": 95.751,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Take your time, I'm still here."
+        },
+        {
+          "turn_id": 34,
+          "speaker": "HM",
+          "start_sec": 95.971,
+          "end_sec": 105.206,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Listen to this. The kale crisps are proper fragile. If they get crushed in transit, it's a terrible first impression, and nobody subscribes for dust."
+        },
+        {
+          "turn_id": 35,
+          "speaker": "AI",
+          "start_sec": 105.436,
+          "end_sec": 111.296,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "That sounded quite delicate. With the tracked service, the parcels are handled slightly differently they go through a gentler sorting stream, so they’re not piled under heavy catalogues."
+        },
+        {
+          "turn_id": 36,
+          "speaker": "HM",
+          "start_sec": 110.756,
+          "end_sec": 114.084,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Meaning they won't get squashed under heavy catalogues?"
+        },
+        {
+          "turn_id": 37,
+          "speaker": "AI",
+          "start_sec": 114.474,
+          "end_sec": 121.545,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "We definitely aim to prevent that. Plus, the Tracked 48 tier includes compensation cover up to a hundred and fifty pounds."
+        }
+      ],
+      "context": {
+        "theme": "",
+        "main_topic": "A startup founder calls the postal service to inquire about bulk mailing rates for her new product launch.",
+        "goal": "Megan: Find the most cost-effective mailing solution for her campaign. | Carlos: Help Megan choose the right service, explain options, possibly upsell tracking.",
+        "location": "Megan's end: Bustling Shoreditch startup office, faint clatter of keyboards, distant chatter of a small team. Carlos's end: Quiet, acoustically treated call center, hushed professional atmosphere.",
+        "time_of_day": "Morning",
+        "interaction_type": "phone",
+        "scene_medium": "phone",
+        "spatial_mode": "split",
+        "relationship_dynamic": "Megan: Customer calling a postal service account specialist | Carlos: Service representative advising a business customer",
+        "expected_turns": 67,
+        "characters": [
+          {
+            "role": "AI",
+            "name": "Carlos",
+            "age": 42,
+            "gender": "男",
+            "occupation": "Postal account specialist",
+            "personality_tag": "严肃男老师 / 老教授",
+            "personality_traits": "Knowledgeable, patient, detail-oriented, professional.",
+            "self_introduction": "42-year-old Royal Mail business account specialist, highly experienced and patient. He has a calm, reassuring tone and is formal but friendly."
+          },
+          {
+            "role": "HM",
+            "name": "Megan",
+            "age": 27,
+            "gender": "女",
+            "occupation": "Entrepreneur",
+            "personality_tag": "干练白领 / 飒爽御姐",
+            "personality_traits": "Energetic, organized, asks many questions, cost-conscious.",
+            "self_introduction": "27-year-old founder of Verdant Cravings, bootstrapping her business from London. She is enthusiastic, polite, and budget-conscious."
+          }
+        ],
+        "ambience": [
+          {
+            "role_key": "role_1",
+            "location": "Megan's end: Bustling Shoreditch startup office",
+            "scene_class": "office"
+          },
+          {
+            "role_key": "role_2",
+            "location": "Carlos's end: Quiet, acoustically treated call center",
+            "scene_class": "office"
+          }
+        ]
+      },
+      "sound_events": [],
+      "clip_window_raw_sec": [
+        91.007,
+        212.342
+      ],
+      "clip_snapped_to_turns": true,
+      "channel_roles": [
+        "HM",
+        "AI"
+      ],
+      "channel_stems": {
+        "HM": "solo_HM_with_background.wav",
+        "AI": "solo_AI_with_background.wav"
+      },
+      "source_sample_rate": 22050,
+      "opus_sample_rate": 24000,
+      "loudness": {
+        "measured_lufs": -23.07,
+        "peak_limited": true,
+        "gain_db": 4.0,
+        "final_lufs": -19.07,
+        "final_peak_dbfs": -1.5
+      },
+      "watermark_uuid": "6014592882de433a9b4209ed9a166bf8",
+      "playback_files": {
+        "hm": {
+          "opus": "assets/audio/_showcase/hl04_event_hm.opus",
+          "m4a": "assets/audio/_showcase/hl04_event_hm.m4a"
+        },
+        "ai": {
+          "opus": "assets/audio/_showcase/hl04_event_ai.opus",
+          "m4a": "assets/audio/_showcase/hl04_event_ai.m4a"
+        }
+      }
+    },
+    {
+      "dialogue_id": 2381,
+      "scenario_zh": "2381_Mia_and_Leo_coffee_discovery",
+      "label_zh": "混合",
+      "src_wav": "/nfs-speech-data/fanwenke/conversion_data_build/20260908_en_data_1681_sample_soundscape_rendered_v34/d_2381_Mia_and_Leo_coffee_discovery_3027/assembled/fullduplex_with_background.wav",
+      "event_turn_id": 13,
+      "event_type": "backchannel",
+      "event_start_sec": 81.0815,
+      "event_end_sec": 82.6691,
+      "clip_start_sec": 72.572,
+      "clip_end_sec": 135.375,
+      "clip_duration_sec": 62.803,
+      "speaker_event": "HM",
+      "event_text": "<user_backchannel>Oh wow.</user_backchannel>",
+      "language": "en",
+      "transcript": [
+        {
+          "turn_id": 12,
+          "speaker": "AI",
+          "start_sec": 0.25,
+          "end_sec": 12.597,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "It has to be. The aroma is so sweet and heavy. Like, intense, jammy blueberry just punching me in the face. I can't even handle it. I seriously can't wait to brew it tomorrow morning."
+        },
+        {
+          "turn_id": 13,
+          "speaker": "HM",
+          "start_sec": 8.51,
+          "end_sec": 10.098,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Oh wow."
+        },
+        {
+          "turn_id": 14,
+          "speaker": "HM",
+          "start_sec": 12.937,
+          "end_sec": 19.675,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "You're making me want to fire up the roaster right now. I'm just out here in the garage messing with some Colombian beans, trying to get my setup right."
+        },
+        {
+          "turn_id": 15,
+          "speaker": "AI",
+          "start_sec": 20.075,
+          "end_sec": 24.598,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Oh, how's that going? Did you get that new temperature probe working?"
+        },
+        {
+          "turn_id": 16,
+          "speaker": "HM",
+          "start_sec": 24.938,
+          "end_sec": 32.022,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Sort of. Still tweaking the software on it, but it's getting there. Honestly, your Yirgacheffe sounds way more exciting right now."
+        },
+        {
+          "turn_id": 17,
+          "speaker": "AI",
+          "start_sec": 32.591,
+          "end_sec": 37.867,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "We definitely need to try this together. I want to see if the blueberry actually comes through in the cup."
+        },
+        {
+          "turn_id": 18,
+          "speaker": "HM",
+          "start_sec": 38.207,
+          "end_sec": 41.147,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "For sure. It should make a wild pour-over."
+        },
+        {
+          "turn_id": 19,
+          "speaker": "AI",
+          "start_sec": 41.547,
+          "end_sec": 48.486,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Exactly! I haven't even brewed it yet and I'm obsessed. I'm just so shocked I found something this good locally."
+        },
+        {
+          "turn_id": 20,
+          "speaker": "HM",
+          "start_sec": 48.805,
+          "end_sec": 58.806,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "It makes you wonder what else we're missing out on. Right under our noses, just waiting to be found. Like, how can we find more local roasters hitting this kind of quality?"
+        },
+        {
+          "turn_id": 21,
+          "speaker": "AI",
+          "start_sec": 51.086,
+          "end_sec": 51.914,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Right?"
+        },
+        {
+          "turn_id": 22,
+          "speaker": "AI",
+          "start_sec": 59.266,
+          "end_sec": 62.584,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "That is a great question. We should look into that."
+        }
+      ],
+      "context": {
+        "theme": "",
+        "main_topic": "Two friends bond over a new coffee discovery and hatch a plan for a private tasting.",
+        "goal": "Mia Carter: to share her latest find and plan a fun coffee activity together | Leo Kim: to catch up and encourage Mia's coffee enthusiasm",
+        "location": "Mia's kitchen and Leo's garage, connected by phone call",
+        "time_of_day": "Tuesday evening",
+        "interaction_type": "collaboration",
+        "scene_medium": "face_to_face",
+        "spatial_mode": "shared",
+        "relationship_dynamic": "Mia Carter: close friend from college | Leo Kim: close friend from college",
+        "expected_turns": 69,
+        "characters": [
+          {
+            "role": "AI",
+            "name": "Mia Carter",
+            "age": 28,
+            "gender": "女",
+            "occupation": "graphic designer and coffee enthusiast",
+            "personality_tag": "邻家女孩 / 知心闺蜜",
+            "personality_traits": "curious, bubbly, detail-oriented",
+            "self_introduction": "I'm Mia, a 28-year-old graphic designer and self-taught home barista. I love exploring single-origin beans and sharing my discoveries with Leo."
+          },
+          {
+            "role": "HM",
+            "name": "Leo Kim",
+            "age": 30,
+            "gender": "男",
+            "occupation": "software engineer and weekend coffee roaster",
+            "personality_tag": "理工男 / 科技宅",
+            "personality_traits": "thoughtful, supportive, likes to go deep on technique",
+            "self_introduction": "I'm Leo, a 30-year-old software engineer who roasts small batches of coffee in my garage. I enjoy building my own coffee gear and diving deep into the craft."
+          }
+        ],
+        "ambience": [
+          {
+            "role_key": "shared",
+            "location": "Mia's kitchen",
+            "scene_class": "home_living"
+          }
+        ]
+      },
+      "sound_events": [],
+      "clip_window_raw_sec": [
+        72.822,
+        135.155
+      ],
+      "clip_snapped_to_turns": true,
+      "channel_roles": [
+        "HM",
+        "AI"
+      ],
+      "channel_stems": {
+        "HM": "solo_HM_with_background.wav",
+        "AI": "solo_AI_with_background.wav"
+      },
+      "source_sample_rate": 22050,
+      "opus_sample_rate": 24000,
+      "loudness": {
+        "measured_lufs": -19.94,
+        "gain_db": 3.94,
+        "final_lufs": -16.0,
+        "final_peak_dbfs": -1.61
+      },
+      "watermark_uuid": "d8ccaa96e2764cb699a317d7e4e4803c",
+      "playback_files": {
+        "hm": {
+          "opus": "assets/audio/_showcase/hl05_event_hm.opus",
+          "m4a": "assets/audio/_showcase/hl05_event_hm.m4a"
+        },
+        "ai": {
+          "opus": "assets/audio/_showcase/hl05_event_ai.opus",
+          "m4a": "assets/audio/_showcase/hl05_event_ai.m4a"
+        }
+      }
+    },
+    {
+      "dialogue_id": 1046,
+      "scenario_zh": "1046_Emily_and_Oliver_rain_on_wedding_eve",
+      "label_zh": "混合",
+      "src_wav": "/nfs-speech-data/fanwenke/conversion_data_build/20260908_en_data_1681_sample_soundscape_rendered_v34/d_1046_Emily_and_Oliver_rain_on_wedding_eve_1621/assembled/fullduplex_with_background.wav",
+      "event_turn_id": 16,
+      "event_type": "interrupt",
+      "event_start_sec": 95.7844,
+      "event_end_sec": 99.6992,
+      "clip_start_sec": 91.414,
+      "clip_end_sec": 176.723,
+      "clip_duration_sec": 85.309,
+      "speaker_event": "HM",
+      "event_text": "<user_interrupt>Sorted? How do you sort out the sk",
+      "language": "en",
+      "transcript": [
+        {
+          "turn_id": 15,
+          "speaker": "AI",
+          "start_sec": 0.29,
+          "end_sec": 4.93,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Because I didn't want you panicking until I had a proper solution sorted and I've got one now."
+        },
+        {
+          "turn_id": 16,
+          "speaker": "HM",
+          "start_sec": 4.37,
+          "end_sec": 8.285,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Sorted? How do you sort out the sky opening up on my guests?"
+        },
+        {
+          "turn_id": 17,
+          "speaker": "AI",
+          "start_sec": 8.545,
+          "end_sec": 11.576,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "By being prepared. Are you near your screen?"
+        },
+        {
+          "turn_id": 18,
+          "speaker": "HM",
+          "start_sec": 11.926,
+          "end_sec": 19.124,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "I mean, yes? I'm just pacing around the suite in my pyjamas trying not to wake Mark. Why?"
+        },
+        {
+          "turn_id": 19,
+          "speaker": "AI",
+          "start_sec": 19.384,
+          "end_sec": 22.106,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "I'm sending a video call request now."
+        },
+        {
+          "turn_id": 20,
+          "speaker": "HM",
+          "start_sec": 22.326,
+          "end_sec": 26.671,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Okay, hang on. My hands are shaking too much to hit the button."
+        },
+        {
+          "turn_id": 21,
+          "speaker": "AI",
+          "start_sec": 26.981,
+          "end_sec": 30.458,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Take a slow breath. Just press accept when you're ready."
+        },
+        {
+          "turn_id": 22,
+          "speaker": "HM",
+          "start_sec": 30.708,
+          "end_sec": 33.541,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Right. Okay, I'm pressing it."
+        },
+        {
+          "turn_id": 23,
+          "speaker": "AI",
+          "start_sec": 34.061,
+          "end_sec": 37.115,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "There we go. Can you see the feed all right?"
+        },
+        {
+          "turn_id": 24,
+          "speaker": "HM",
+          "start_sec": 37.495,
+          "end_sec": 46.628,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Yeah, I see you. Just wiping my face. Wait, where on earth are you? It's so bright in there, I can barely tell what I'm looking at."
+        },
+        {
+          "turn_id": 25,
+          "speaker": "AI",
+          "start_sec": 46.978,
+          "end_sec": 52.959,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "I'm inside the Glass Conservatory. Let me just flip the camera around so you can see the whole room."
+        },
+        {
+          "turn_id": 26,
+          "speaker": "HM",
+          "start_sec": 53.209,
+          "end_sec": 56.027,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Oh my god. Is that our setup for tomorrow?"
+        },
+        {
+          "turn_id": 27,
+          "speaker": "AI",
+          "start_sec": 56.257,
+          "end_sec": 61.097,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Fully draped and heated. The lads have been at it since dinner time, so we're all sorted."
+        },
+        {
+          "turn_id": 28,
+          "speaker": "HM",
+          "start_sec": 60.497,
+          "end_sec": 67.548,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "I don't understand how you managed this. How did you get all those chairs in so fast? And the lighting is perfectly rigged up to the ceiling!"
+        },
+        {
+          "turn_id": 29,
+          "speaker": "AI",
+          "start_sec": 67.908,
+          "end_sec": 77.386,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "I pulled the crew off the South Lawn the second that weather front shifted so we could get the conservatory set up and looking perfect for you. So we've had a fair bit of time to get it sorted."
+        },
+        {
+          "turn_id": 30,
+          "speaker": "HM",
+          "start_sec": 71.948,
+          "end_sec": 73.043,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "Oh wow."
+        },
+        {
+          "turn_id": 31,
+          "speaker": "HM",
+          "start_sec": 77.786,
+          "end_sec": 85.029,
+          "clipped_head": false,
+          "clipped_tail": false,
+          "text": "It's absolutely massive. I always thought it would feel a bit like a cramped greenhouse, but it actually looks like a proper venue."
+        }
+      ],
+      "context": {
+        "theme": "",
+        "main_topic": "Late-night phone/video call between bride and wedding planner on the eve of the wedding, discussing rain contingency plans.",
+        "goal": "Emily Watson: To salvage her dream outdoor ceremony despite the weather. | Oliver Grant: To defuse the panic, present the indoor alternative, and reframe the situation as an opportunity.",
+        "location": "Emily's hotel suite at Rosewood Manor; Oliver on the grounds and in the Glass Conservatory",
+        "time_of_day": "11 PM on the eve of the wedding",
+        "interaction_type": "care_support",
+        "scene_medium": "face_to_face",
+        "spatial_mode": "shared",
+        "relationship_dynamic": "Emily Watson: Has worked with Oliver for ten months; sees him as a miracle worker and calls him for every small worry. | Oliver Grant: Emily’s planner; has grown fond of her earnestness and treats her like a younger sister.",
+        "expected_turns": 66,
+        "characters": [
+          {
+            "role": "AI",
+            "name": "Oliver Grant",
+            "age": 35,
+            "gender": "男",
+            "occupation": "wedding planner",
+            "personality_tag": "理工男 / 科技宅",
+            "personality_traits": "unflappable, logical, with a dry humor; always has a Plan B, C, and D",
+            "self_introduction": "I'm Oliver, a wedding planner. I've been working with Emily for ten months, and I know how to handle her panics. I always have backup plans. Tonight, I'm at the venue, ready to deploy the transparent tent if needed."
+          },
+          {
+            "role": "HM",
+            "name": "Emily Watson",
+            "age": 26,
+            "gender": "女",
+            "occupation": "primary school teacher (Year 2)",
+            "personality_tag": "邻家女孩 / 知心闺蜜",
+            "personality_traits": "sweet-natured but prone to catastrophic thinking; easily spun into panic by things outside her control",
+            "self_introduction": "I'm Emily, a Year 2 teacher, and I'm getting married tomorrow. I've been planning this outdoor garden ceremony for a year, and now I'm panicking about the rain. I tend to spiral when things go wrong, but Oliver always calms me down."
+          }
+        ],
+        "ambience": [
+          {
+            "role_key": "shared",
+            "location": "Emily's hotel suite at Rosewood Manor",
+            "scene_class": "quiet_indoor"
+          }
+        ]
+      },
+      "sound_events": [
+        {
+          "request_id": "turn_18:0",
+          "event_class": "footstep_indoor",
+          "macro_class": "",
+          "intensity": "low",
+          "start_sec": 11.576,
+          "end_sec": 11.926,
+          "duration_sec": 0.35,
+          "asset_id": "zapsplat:38fa483b5be5d514c6e0",
+          "channels": [
+            "AI",
+            "HM"
+          ]
+        },
+        {
+          "request_id": "turn_19:0",
+          "event_class": "notification_beep",
+          "macro_class": "",
+          "intensity": "medium",
+          "start_sec": 22.106,
+          "end_sec": 22.326,
+          "duration_sec": 0.22,
+          "asset_id": "zapsplat:1b1ee58bd99f3553237f",
+          "channels": [
+            "AI",
+            "HM"
+          ]
+        },
+        {
+          "request_id": "turn_22:0",
+          "event_class": "phone_tap_or_vibration",
+          "macro_class": "",
+          "intensity": "low",
+          "start_sec": 30.458,
+          "end_sec": 30.708,
+          "duration_sec": 0.25,
+          "asset_id": "wavcaps_freesound:4be84c37582b7f8a11a8",
+          "channels": [
+            "AI",
+            "HM"
+          ]
+        },
+        {
+          "request_id": "turn_24:0",
+          "event_class": "cloth_rustle",
+          "macro_class": "",
+          "intensity": "low",
+          "start_sec": 37.115,
+          "end_sec": 37.495,
+          "duration_sec": 0.38,
+          "asset_id": "zapsplat:42bc93630cbaaaf63991",
+          "channels": [
+            "AI",
+            "HM"
+          ]
+        },
+        {
+          "request_id": "turn_32:0",
+          "event_class": "footstep_indoor",
+          "macro_class": "",
+          "intensity": "medium",
+          "start_sec": 85.029,
+          "end_sec": 85.309,
+          "duration_sec": 0.28,
+          "asset_id": "zapsplat:c8ad39b472d41e7d4769",
+          "channels": [
+            "AI",
+            "HM"
+          ]
+        }
+      ],
+      "clip_window_raw_sec": [
+        91.704,
+        176.443
+      ],
+      "clip_snapped_to_turns": true,
+      "channel_roles": [
+        "HM",
+        "AI"
+      ],
+      "channel_stems": {
+        "HM": "solo_HM_with_background.wav",
+        "AI": "solo_AI_with_background.wav"
+      },
+      "source_sample_rate": 22050,
+      "opus_sample_rate": 24000,
+      "loudness": {
+        "measured_lufs": -21.85,
+        "peak_limited": true,
+        "gain_db": 4.27,
+        "final_lufs": -17.58,
+        "final_peak_dbfs": -1.5
+      },
+      "watermark_uuid": "ee10c19531f04d0188352a078fc5822b",
+      "playback_files": {
+        "hm": {
+          "opus": "assets/audio/_showcase/hl06_event_hm.opus",
+          "m4a": "assets/audio/_showcase/hl06_event_hm.m4a"
+        },
+        "ai": {
+          "opus": "assets/audio/_showcase/hl06_event_ai.opus",
+          "m4a": "assets/audio/_showcase/hl06_event_ai.m4a"
+        }
+      }
+    }
+  ],
+  "channel_roles": [
+    "HM",
+    "AI"
+  ],
+  "channel_stems": {
+    "HM": "solo_HM_with_background.wav",
+    "AI": "solo_AI_with_background.wav"
+  },
+  "rebuild": {
+    "generations": 1,
+    "opus_encoder": "libsndfile 1.2.2 (libopus)",
+    "m4a_encoder": "ffmpeg native aac @ 160k",
+    "watermark": "per-channel AudioSeal 16-bit",
+    "loudness_target_lufs": -16.0
+  }
+}
